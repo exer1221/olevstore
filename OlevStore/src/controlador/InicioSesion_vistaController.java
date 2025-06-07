@@ -11,8 +11,6 @@ import javafx.scene.layout.Pane;
 public class InicioSesion_vistaController implements Initializable {
 
     @FXML
-    private TextField txtCorreo;
-    @FXML
     private Pane btnApple;
     @FXML
     private Pane btnGoogle;
@@ -20,6 +18,22 @@ public class InicioSesion_vistaController implements Initializable {
     private TextField txtPassword;
     @FXML
     private Button btnRegistrarse;
+    @FXML
+    private Pane paneInicioSesion;
+    @FXML
+    private TextField txtCorreoIngreso;
+    @FXML
+    private Button btnIngresar;
+    @FXML
+    private Pane paneCrearCuenta;
+    @FXML
+    private TextField txtCorreoInicioSesion;
+    @FXML
+    private Button btnCrearCuenta;
+    @FXML
+    private Pane btnApple1;
+    @FXML
+    private Pane btnGoogle1;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
