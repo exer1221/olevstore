@@ -12,187 +12,194 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.InicioSesion_vistaController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.InicioSesion_vistaController">
    <children>
-      <Pane layoutX="-2.0" prefHeight="971.0" prefWidth="1451.0">
+      <AnchorPane prefHeight="153.0" prefWidth="1008.0" style="-fx-background-color: #BABABA;" AnchorPane.leftAnchor="292.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Pane layoutX="292.0" prefHeight="153.0" prefWidth="1159.0" style="-fx-background-color: #BABABA;">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="OlevStore" AnchorPane.rightAnchor="330.0" AnchorPane.topAnchor="20.0">
+               <font>
+                  <Font name="System Bold" size="58.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="32.0" fitWidth="32.0" onMouseClicked="#btnApagarPrograma" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
+               <image>
+                  <Image url="@../imagen/cruz.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Pane prefHeight="972.0" prefWidth="292.0" style="-fx-background-color: #383A66;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Pane fx:id="paneCrearCuenta" prefHeight="600.0" prefWidth="622.0" visible="false" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="155.0">
+         <children>
+            <TextField fx:id="txtCorreoCuentaNueva" layoutX="113.0" layoutY="126.0" prefHeight="51.0" prefWidth="383.0" promptText="email@domain.com" style="-fx-background-radius: 10;">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
+            <Text layoutX="112.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Haz parte de nuestra comunidad">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Text>
+            <Text layoutX="195.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Utiliza tu correo para registrarte">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Button fx:id="btnCrearCuenta" layoutX="113.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#btnCrearCuenta_Clicked" prefHeight="49.0" prefWidth="383.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Crear Cuenta" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Text fill="GREY" layoutX="256.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="o continua con">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Line endX="114.0" layoutX="116.0" layoutY="357.0" startX="3.0" stroke="#808080" />
+            <Line endX="135.3333740234375" layoutX="358.0" layoutY="357.0" startX="11.0" stroke="GREY" />
+            <Pane fx:id="btnApple1" layoutX="113.0" layoutY="404.0" prefHeight="49.0" prefWidth="383.0" style="-fx-background-color: #d3d3d3; -fx-background-radius: 10;">
                <children>
-                  <Text layoutX="398.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OlevStore">
+                  <ImageView fitHeight="58.0" fitWidth="34.0" layoutX="19.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagen/apple.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="164.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apple">
                      <font>
-                        <Font name="System Bold" size="58.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
                </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Pane>
-            <Pane prefHeight="972.0" prefWidth="292.0" style="-fx-background-color: #383A66;" />
-            <Pane fx:id="paneInicioSesion" layoutX="462.0" layoutY="162.0" prefHeight="747.0" prefWidth="899.0" visible="false">
+            <Pane fx:id="btnGoogle1" layoutX="113.0" layoutY="482.0" prefHeight="49.0" prefWidth="383.0" style="-fx-background-color: #d3d3d3; -fx-background-radius: 10;">
                <children>
-                  <TextField fx:id="txtCorreoIngreso" layoutX="154.0" layoutY="91.0" prefHeight="49.0" prefWidth="477.0" promptText="email@domain.com" style="-fx-background-radius: 10;">
+                  <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="20.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagen/google.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="158.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Google">
                      <font>
-                        <Font size="24.0" />
-                     </font>
-                  </TextField>
-                  <Text layoutX="295.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Iniciar Sesion">
-                     <font>
-                        <Font name="System Bold" size="31.0" />
-                     </font>
-                  </Text>
-                  <Button fx:id="btnIngresar" layoutX="152.0" layoutY="236.0" mnemonicParsing="false" onMouseClicked="#btnIngresar_Clicked" prefHeight="49.0" prefWidth="477.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Ingresar" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Pane fx:id="btnApple" layoutX="152.0" layoutY="319.0" onMouseClicked="#btnApple_Clicked" prefHeight="49.0" prefWidth="474.0" style="-fx-background-color: #d3d3d3;">
-                     <children>
-                        <ImageView fitHeight="58.0" fitWidth="34.0" layoutX="19.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imagen/apple.png" />
-                           </image>
-                        </ImageView>
-                        <Text layoutX="210.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apple">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Text>
-                     </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Pane>
-                  <Pane fx:id="btnGoogle" layoutX="152.0" layoutY="393.0" onMouseClicked="#btnGoogle_Clicked" prefHeight="49.0" prefWidth="474.0" style="-fx-background-color: #d3d3d3;">
-                     <children>
-                        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="20.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imagen/google.png" />
-                           </image>
-                        </ImageView>
-                        <Text layoutX="212.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Google">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Text>
-                     </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Pane>
-                  <Line endX="151.0" layoutX="127.0" layoutY="485.0" startX="25.66668701171875" stroke="#808080" />
-                  <Line endX="133.3333740234375" layoutX="497.0" layoutY="485.0" startX="10.66668701171875" stroke="GREY" />
-                  <Text fill="GREY" layoutX="307.0" layoutY="491.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si no tienes una cuenta">
-                     <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Button fx:id="btnRegistrarse" layoutX="155.0" layoutY="514.0" mnemonicParsing="false" onMouseClicked="#btnRegistrarse_Clicked" prefHeight="49.0" prefWidth="477.0" style="-fx-background-color: #d3d3d3; -fx-background-radius: 10;" text="Registrarse">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Text fill="GREY" layoutX="224.0" layoutY="612.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Al hacer click en continuar, aceptas nuestros">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Text>
-                  <Text fill="GREY" layoutX="224.0" layoutY="637.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Terminos de Servicio y Politica de Privacidad">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Text>
-                  <PasswordField fx:id="txtPassword" layoutX="152.0" layoutY="161.0" prefHeight="49.0" prefWidth="477.0" promptText="Password" style="-fx-background-radius: 10;">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </PasswordField>
-                  <Text fx:id="textoError1" fill="#ff4343" layoutX="155.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto de pueba*" visible="false" wrappingWidth="169.13671875" />
-                  <Text fx:id="textoError2" fill="#ff4343" layoutX="155.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto de pueba*" visible="false" wrappingWidth="169.13671875" />
                </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Pane>
-            <Pane fx:id="paneCrearCuenta" layoutX="417.0" layoutY="155.0" prefHeight="747.0" prefWidth="899.0">
+            <Text fill="GREY" layoutX="166.0" layoutY="550.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Al hacer click en continuar, aceptas nuestros">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fill="GREY" layoutX="165.0" layoutY="569.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Terminos de Servicio y Politica de Privacidad">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="textoError3" fill="#ff4343" layoutX="197.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese un correo valido*" visible="false" />
+            <TextField fx:id="txtPasswordCrear" layoutX="113.0" layoutY="193.0" prefHeight="51.0" prefWidth="383.0" promptText="Password" style="-fx-background-radius: 10;">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
+            <Text fx:id="textoError4" fill="#ff4343" layoutX="194.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese un correo valido*" visible="false" />
+         </children>
+      </Pane>
+      <Pane fx:id="paneInicioSesion" prefHeight="600.0" prefWidth="622.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="155.0">
+         <children>
+            <TextField fx:id="txtCorreoIngreso" layoutX="110.0" layoutY="96.0" prefHeight="49.0" prefWidth="383.0" promptText="email@domain.com" style="-fx-background-radius: 10;">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
+            <Text layoutX="224.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Iniciar Sesion">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Text>
+            <Button fx:id="btnIngresar" layoutX="110.0" layoutY="236.0" mnemonicParsing="false" onMouseClicked="#btnIngresar_Clicked" prefHeight="49.0" prefWidth="383.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Ingresar" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Pane fx:id="btnApple" layoutX="110.0" layoutY="310.0" onMouseClicked="#btnApple_Clicked" prefHeight="49.0" prefWidth="383.0" style="-fx-background-color: #d3d3d3; -fx-background-radius: 10;">
                <children>
-                  <TextField fx:id="txtCorreoCuentaNueva" layoutX="191.0" layoutY="193.0" prefHeight="49.0" prefWidth="477.0" promptText="email@domain.com" style="-fx-background-radius: 10;">
+                  <ImageView fitHeight="58.0" fitWidth="34.0" layoutX="19.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagen/apple.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="164.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apple">
                      <font>
-                        <Font size="24.0" />
-                     </font>
-                  </TextField>
-                  <Text layoutX="191.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Haz parte de nuestra comunidad">
-                     <font>
-                        <Font name="System Bold" size="31.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="274.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Utiliza tu correo para registrarte">
-                     <font>
-                        <Font size="21.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Button fx:id="btnCrearCuenta" layoutX="194.0" layoutY="263.0" mnemonicParsing="false" onMouseClicked="#btnCrearCuenta_Clicked" prefHeight="49.0" prefWidth="477.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Crear Cuenta" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Text fill="GREY" layoutX="372.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="o continua con">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Text>
-                  <Line endX="161.66668701171875" layoutX="194.0" layoutY="363.0" startX="3.0" stroke="#808080" />
-                  <Line endX="135.3333740234375" layoutX="531.0" layoutY="362.0" startX="-11.33331298828125" stroke="GREY" />
-                  <Pane fx:id="btnApple1" layoutX="197.0" layoutY="433.0" prefHeight="49.0" prefWidth="477.0" style="-fx-background-color: #d3d3d3;">
-                     <children>
-                        <ImageView fitHeight="58.0" fitWidth="34.0" layoutX="19.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imagen/apple.png" />
-                           </image>
-                        </ImageView>
-                        <Text layoutX="210.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apple">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Text>
-                     </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Pane>
-                  <Pane fx:id="btnGoogle1" layoutX="196.0" layoutY="511.0" prefHeight="49.0" prefWidth="479.0" style="-fx-background-color: #d3d3d3;">
-                     <children>
-                        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="20.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imagen/google.png" />
-                           </image>
-                        </ImageView>
-                        <Text layoutX="212.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Google">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Text>
-                     </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Pane>
-                  <Text fill="GREY" layoutX="261.0" layoutY="597.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Al hacer click en continuar, aceptas nuestros">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Text>
-                  <Text fill="GREY" layoutX="264.0" layoutY="627.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Terminos de Servicio y Politica de Privacidad">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="textoError3" fill="#ff4343" layoutX="207.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese un correo valido*" visible="false" />
                </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Pane>
+            <Pane fx:id="btnGoogle" layoutX="110.0" layoutY="372.0" onMouseClicked="#btnGoogle_Clicked" prefHeight="49.0" prefWidth="383.0" style="-fx-background-color: #d3d3d3; -fx-background-radius: 10;">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="20.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagen/google.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="158.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Google">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Pane>
+            <Line endX="126.0" layoutX="89.0" layoutY="444.0" startX="25.66668701171875" stroke="#808080" />
+            <Line endX="104.0" layoutX="383.0" layoutY="445.0" startX="10.66668701171875" stroke="GREY" />
+            <Text fill="GREY" layoutX="234.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si no tienes una cuenta">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Button fx:id="btnRegistrarse" layoutX="110.0" layoutY="470.0" mnemonicParsing="false" onMouseClicked="#btnRegistrarse_Clicked" prefHeight="49.0" prefWidth="383.0" style="-fx-background-color: #d3d3d3; -fx-background-radius: 10;" text="Registrarse">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Text fill="GREY" layoutX="170.0" layoutY="548.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Al hacer click en continuar, aceptas nuestros">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fill="GREY" layoutX="169.0" layoutY="567.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Terminos de Servicio y Politica de Privacidad">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="textoError1" fill="#ff4343" layoutX="155.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto de pueba*" visible="false" wrappingWidth="169.13671875" />
+            <Text fx:id="textoError2" fill="#ff4343" layoutX="155.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto de pueba*" visible="false" wrappingWidth="169.13671875" />
+            <PasswordField fx:id="txtPasswordIngreso" layoutX="110.0" layoutY="163.0" prefHeight="51.0" prefWidth="383.0" promptText="Password" style="-fx-background-radius: 10;">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </PasswordField>
          </children>
       </Pane>
    </children>
