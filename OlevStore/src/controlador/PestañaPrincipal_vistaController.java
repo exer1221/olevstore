@@ -1,9 +1,14 @@
 package controlador;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -67,6 +72,50 @@ public class PestañaPrincipal_vistaController implements Initializable {
     private Pane pnPagoMasterCard;
     @FXML
     private Pane pnPagoNequiPaypal;
+    @FXML
+    private Text textoUsuario1;
+    @FXML
+    private Pane paneContentLoggout;
+    @FXML
+    private Text textoUsuario2;
+
+    InicioSesion_vistaController InicioSesion_vistaController;
+    @FXML
+    private Pane pnDescControlPlay;
+    @FXML
+    private Button btnAñadirAlCarrito2;
+    @FXML
+    private Pane pnDescTecladoGamerOptico;
+    @FXML
+    private Button btnAñadirAlCarrito21;
+    @FXML
+    private Pane pnDescTecladoGamerRedragon;
+    @FXML
+    private Button btnAñadirAlCarrito211;
+    @FXML
+    private Pane pnDescAuricularesLogitech;
+    @FXML
+    private Button btnAñadirAlCarrito2111;
+    @FXML
+    private Pane pnDescMonitorGamer;
+    @FXML
+    private Button btnAñadirAlCarrito21111;
+    @FXML
+    private Pane pnDescAuricularesG935;
+    @FXML
+    private Button btnAñadirAlCarrito211111;
+    @FXML
+    private Pane pnDescMonitorAOC;
+    @FXML
+    private Button btnAñadirAlCarrito2111111;
+    @FXML
+    private Pane pnDescMicrofono;
+    @FXML
+    private Button btnAñadirAlCarrito21111111;
+    @FXML
+    private Pane pnDescCamaraWeb;
+    @FXML
+    private Button btnAñadirAlCarrito211111111;
 
     /**
      * Initializes the controller class.
@@ -96,8 +145,19 @@ public class PestañaPrincipal_vistaController implements Initializable {
         pnDescControlXBOX.setVisible(false);
         pnDescMouseAttack.setVisible(false);
         pnDescMouseLogitech.setVisible(false);
+        pnDescControlPlay.setVisible(false);
+        pnDescTecladoGamerOptico.setVisible(false);
+        pnDescTecladoGamerRedragon.setVisible(false);
+        pnDescAuricularesLogitech.setVisible(false);
+        pnDescMonitorGamer.setVisible(false);
+        pnDescAuricularesG935.setVisible(false);
+        pnDescMonitorAOC.setVisible(false);
+        pnDescMicrofono.setVisible(false);
+        pnDescCamaraWeb.setVisible(false);
+
         paneCarritoCompras.setVisible(false);
         paneListaDeseados.setVisible(false);
+        paneContentLoggout.setVisible(false);
 
         pnPasarelaPago.setVisible(false);
     }
@@ -136,6 +196,12 @@ public class PestañaPrincipal_vistaController implements Initializable {
 
     @FXML
     private void btnUsuario_Clicked(MouseEvent event) {
+        boolean visibleAhora = !paneContentLoggout.isVisible();
+        paneContentLoggout.setVisible(visibleAhora);
+
+        if (visibleAhora) {
+            paneContentLoggout.toFront();
+        }
     }
 
     @FXML
@@ -154,6 +220,7 @@ public class PestañaPrincipal_vistaController implements Initializable {
         paneBarrasBusqueda.setVisible(true);
     }
 
+    //Aqui inicio con los eventos del catalogo, que diavlura
     @FXML
     private void btnControlXBOX_Clicked(MouseEvent event) {
         paneCatalogo.setVisible(false);
@@ -185,9 +252,100 @@ public class PestañaPrincipal_vistaController implements Initializable {
     }
 
     @FXML
+    private void btnControlPlay_Clicked(MouseEvent event) {
+        paneCatalogo.setVisible(false);
+        pnDescControlPlay.setVisible(true);
+
+        pnBtnCarritoCompra.setVisible(false);
+        pnBtnListaDeseados.setVisible(false);
+        pnBtnInicio.setVisible(true);
+    }
+
+    @FXML
+    private void btnTecladoGamerOptico_Clicked(MouseEvent event) {
+        paneCatalogo.setVisible(false);
+        pnDescTecladoGamerOptico.setVisible(true);
+
+        pnBtnCarritoCompra.setVisible(false);
+        pnBtnListaDeseados.setVisible(false);
+        pnBtnInicio.setVisible(true);
+    }
+
+    @FXML
+    private void btnTecladoGamerReDragon_Clicked(MouseEvent event) {
+        paneCatalogo.setVisible(false);
+        pnDescTecladoGamerRedragon.setVisible(true);
+
+        pnBtnCarritoCompra.setVisible(false);
+        pnBtnListaDeseados.setVisible(false);
+        pnBtnInicio.setVisible(true);
+    }
+
+    @FXML
+    private void btnAuricularesG335_Clicked(MouseEvent event) {
+        paneCatalogo.setVisible(false);
+        pnDescAuricularesLogitech.setVisible(true);
+
+        pnBtnCarritoCompra.setVisible(false);
+        pnBtnListaDeseados.setVisible(false);
+        pnBtnInicio.setVisible(true);
+    }
+
+    @FXML
+    private void btnMonitorGamer_Clicked(MouseEvent event) {
+        paneCatalogo.setVisible(false);
+        pnDescMonitorGamer.setVisible(true);
+
+        pnBtnCarritoCompra.setVisible(false);
+        pnBtnListaDeseados.setVisible(false);
+        pnBtnInicio.setVisible(true);
+    }
+
+    @FXML
+    private void btnAuricularesG935_Clicked(MouseEvent event) {
+        paneCatalogo.setVisible(false);
+        pnDescAuricularesG935.setVisible(true);
+
+        pnBtnCarritoCompra.setVisible(false);
+        pnBtnListaDeseados.setVisible(false);
+        pnBtnInicio.setVisible(true);
+    }
+
+    @FXML
+    private void btnMonitorAOC_Clicked(MouseEvent event) {
+        paneCatalogo.setVisible(false);
+        pnDescMonitorAOC.setVisible(true);
+
+        pnBtnCarritoCompra.setVisible(false);
+        pnBtnListaDeseados.setVisible(false);
+        pnBtnInicio.setVisible(true);
+    }
+
+    @FXML
+    private void btnMicrofono_Clicked(MouseEvent event) {
+        paneCatalogo.setVisible(false);
+        pnDescMicrofono.setVisible(true);
+
+        pnBtnCarritoCompra.setVisible(false);
+        pnBtnListaDeseados.setVisible(false);
+        pnBtnInicio.setVisible(true);
+    }
+
+    @FXML
+    private void btnCamaraWeb_Clicked(MouseEvent event) {
+        paneCatalogo.setVisible(false);
+        pnDescCamaraWeb.setVisible(true);
+
+        pnBtnCarritoCompra.setVisible(false);
+        pnBtnListaDeseados.setVisible(false);
+        pnBtnInicio.setVisible(true);
+    }
+
+    //Cositas de la pasarela de pago
+    @FXML
     private void btnNequi_Clicked(MouseEvent event) {
         cerrarMetodoPago();
-        
+
         confNequi.setVisible(true);
         confMasterCard.setVisible(false);
         confPaypal.setVisible(false);
@@ -198,7 +356,7 @@ public class PestañaPrincipal_vistaController implements Initializable {
     @FXML
     private void btnPaypal_Click(MouseEvent event) {
         cerrarMetodoPago();
-        
+
         confNequi.setVisible(false);
         confMasterCard.setVisible(false);
         confPaypal.setVisible(true);
@@ -209,7 +367,7 @@ public class PestañaPrincipal_vistaController implements Initializable {
     @FXML
     private void btnMasterCard_Clicked(MouseEvent event) {
         cerrarMetodoPago();
-        
+
         confNequi.setVisible(false);
         confMasterCard.setVisible(true);
         confPaypal.setVisible(false);
@@ -226,7 +384,7 @@ public class PestañaPrincipal_vistaController implements Initializable {
     private void btnPagarTodo_Clicked(MouseEvent event) {
         abrirPasarelaPago();
     }
-    
+
     public void cerrarMetodoPago() {
         pnPagoNequiPaypal.setVisible(false);
         pnPagoMasterCard.setVisible(false);
@@ -240,12 +398,29 @@ public class PestañaPrincipal_vistaController implements Initializable {
 
         //Hice esto para no tener que repetir mucho codigo, se ve feo :v
         cerrarMetodoPago();
-        
+
         confNequi.setVisible(false);
         confMasterCard.setVisible(false);
         confPaypal.setVisible(false);
 
-        
+    }
+
+    @FXML
+    private void btnCerrarSesion_Clicked(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/InicioSesion_vista.fxml"));
+            Parent root = loader.load();
+
+            Stage nuevoStage = new Stage();
+            nuevoStage.setScene(new Scene(root));
+            nuevoStage.show();
+
+            Stage stageActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stageActual.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

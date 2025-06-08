@@ -18,6 +18,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="960.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.PestañaPrincipal_vistaController">
    <children>
+      <AnchorPane prefHeight="960.0" prefWidth="1442.0" AnchorPane.leftAnchor="292.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Pane layoutX="-2.0" prefHeight="960.0" prefWidth="1442.0">
          <children>
             <Pane prefHeight="960.0" prefWidth="148.0" style="-fx-background-color: white;">
@@ -44,7 +45,8 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ImageView>
-                     </children></Pane>
+                     </children>
+                  </Pane>
                   <Pane fx:id="pnBtnInicio" layoutX="11.0" layoutY="9.0" onMouseClicked="#btnInicio_Clicked" prefHeight="145.0" prefWidth="129.0" style="-fx-background-color: white;" visible="false">
                      <children>
                         <ImageView fx:id="btnInicio" fitHeight="97.0" fitWidth="97.0" layoutX="16.0" layoutY="7.0" onMouseClicked="#btnInicio_Clicked" pickOnBounds="true" preserveRatio="true">
@@ -57,7 +59,8 @@
                         </ImageView>
                      </children>
                   </Pane>
-               </children></Pane>
+               </children>
+            </Pane>
             <Pane layoutX="148.0" prefHeight="88.0" prefWidth="1058.0" style="-fx-background-color: white; -fx-border-color: white white gray white;">
                <children>
                   <Pane fx:id="paneBarrasBusqueda" layoutX="184.0" layoutY="3.0" prefHeight="77.0" prefWidth="794.0" style="-fx-background-color: white;" visible="false">
@@ -76,31 +79,31 @@
                      </font>
                   </Text>
                </children></Pane>
-            <Pane layoutX="1206.0" prefHeight="88.0" prefWidth="236.0" style="-fx-border-color: white white gray white; -fx-background-color: white;">
+            <Pane layoutX="1206.0" onMouseClicked="#btnUsuario_Clicked" prefHeight="88.0" prefWidth="236.0" style="-fx-border-color: white white gray white; -fx-background-color: white;">
                <children>
                   <ImageView fx:id="btnUsuario" fitHeight="84.0" fitWidth="98.0" layoutX="2.0" layoutY="1.0" onMouseClicked="#btnUsuario_Clicked" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../imagen/usuario.png" />
                      </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
                   </ImageView>
-                  <Text layoutX="95.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario">
+                  <Text fx:id="textoUsuario1" layoutX="95.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-               </children></Pane>
-            <Pane fx:id="paneCatalogo" layoutX="148.0" layoutY="88.0" prefHeight="872.0" prefWidth="1294.0" visible="false">
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Pane>
+            <Pane fx:id="paneCatalogo" layoutX="148.0" layoutY="88.0" prefHeight="872.0" prefWidth="1294.0">
                <children>
-                  <AnchorPane layoutX="1.0" layoutY="-2.0" prefHeight="874.0" prefWidth="1294.0">
+                  <AnchorPane layoutX="1.0" layoutY="-2.0" prefHeight="1300.0" prefWidth="1294.0">
                      <children>
-                        <ScrollPane hbarPolicy="NEVER" layoutX="-2.0" prefHeight="874.0" prefWidth="1296.0" vbarPolicy="ALWAYS">
+                        <ScrollPane hbarPolicy="NEVER" layoutX="-2.0" prefHeight="873.0" prefWidth="1296.0" vbarPolicy="ALWAYS">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1106.0" prefWidth="1292.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1300.0" prefWidth="1286.0">
                                  <children>
-                                    <GridPane layoutY="2.0" prefHeight="762.0" prefWidth="1280.0">
+                                    <GridPane layoutY="2.0" prefHeight="1148.0" prefWidth="1280.0">
                                       <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="656.0" minWidth="10.0" prefWidth="640.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="656.0" minWidth="10.0" prefWidth="640.0" />
@@ -110,6 +113,7 @@
                                       <rowConstraints>
                                         <RowConstraints maxHeight="412.0" minHeight="10.0" prefHeight="386.0" vgrow="SOMETIMES" />
                                         <RowConstraints maxHeight="448.0" minHeight="10.0" prefHeight="390.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="448.0" minHeight="10.0" prefHeight="390.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
                                           <Pane onMouseClicked="#btnControlXBOX_Clicked" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
@@ -169,7 +173,7 @@
                                                 </Text>
                                              </children>
                                           </Pane>
-                                          <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="3">
+                                          <Pane onMouseClicked="#btnControlPlay_Clicked" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="3">
                                              <children>
                                                 <ImageView fitHeight="256.0" fitWidth="362.0" layoutX="32.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
@@ -188,7 +192,7 @@
                                                 </Text>
                                              </children>
                                           </Pane>
-                                          <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.rowIndex="1">
+                                          <Pane onMouseClicked="#btnTecladoGamerOptico_Clicked" prefHeight="416.0" prefWidth="320.0" style="-fx-background-color: white;" GridPane.rowIndex="1">
                                              <children>
                                                 <ImageView fitHeight="256.0" fitWidth="362.0" layoutX="36.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
@@ -207,7 +211,7 @@
                                                 </Text>
                                              </children>
                                           </Pane>
-                                          <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                          <Pane onMouseClicked="#btnTecladoGamerReDragon_Clicked" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                              <children>
                                                 <ImageView fitHeight="256.0" fitWidth="362.0" layoutX="32.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
@@ -226,7 +230,7 @@
                                                 </Text>
                                              </children>
                                           </Pane>
-                                          <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                          <Pane onMouseClicked="#btnAuricularesG335_Clicked" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                              <children>
                                                 <ImageView fitHeight="256.0" fitWidth="362.0" layoutX="30.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
@@ -245,7 +249,7 @@
                                                 </Text>
                                              </children>
                                           </Pane>
-                                          <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                          <Pane onMouseClicked="#btnMonitorGamer_Clicked" prefHeight="428.0" prefWidth="320.0" style="-fx-background-color: white;" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                              <children>
                                                 <ImageView fitHeight="256.0" fitWidth="362.0" layoutX="32.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
@@ -258,6 +262,82 @@
                                                    </font>
                                                 </Text>
                                                 <Text fill="#2c2c2c" layoutX="27.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$400.000">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </Pane>
+                                          <Pane layoutX="650.0" layoutY="10.0" onMouseClicked="#btnAuricularesG935_Clicked" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.rowIndex="2">
+                                             <children>
+                                                <ImageView fitHeight="256.0" fitWidth="362.0" layoutX="36.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../imagen/G935.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Text layoutX="22.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logitech G935">
+                                                   <font>
+                                                      <Font name="System Bold" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#2c2c2c" layoutX="25.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$750.000">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </Pane>
+                                          <Pane layoutX="650.0" layoutY="10.0" onMouseClicked="#btnMonitorAOC_Clicked" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <children>
+                                                <ImageView fitHeight="256.0" fitWidth="362.0" layoutX="36.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../imagen/monitor2.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Text layoutX="22.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monitor Gamer AOC">
+                                                   <font>
+                                                      <Font name="System Bold" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#2c2c2c" layoutX="25.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$700.000">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </Pane>
+                                          <Pane layoutX="650.0" layoutY="10.0" onMouseClicked="#btnMicrofono_Clicked" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                             <children>
+                                                <ImageView fitHeight="256.0" fitWidth="362.0" layoutX="54.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../imagen/microfono.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Text layoutX="22.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Micrófono VSG Omkara">
+                                                   <font>
+                                                      <Font name="System Bold" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#2c2c2c" layoutX="25.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$239.000">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </Pane>
+                                          <Pane layoutX="970.0" layoutY="10.0" onMouseClicked="#btnCamaraWeb_Clicked" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                             <children>
+                                                <ImageView fitHeight="256.0" fitWidth="362.0" layoutX="32.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../imagen/Camara.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Text layoutX="22.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Camara Web C270 HD">
+                                                   <font>
+                                                      <Font name="System Bold" size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#2c2c2c" layoutX="25.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$120.000">
                                                    <font>
                                                       <Font size="20.0" />
                                                    </font>
@@ -433,7 +513,7 @@
                <children>
                   <Text layoutX="599.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aqui va la lista de favoritos" />
                </children></Pane>
-            <Pane fx:id="pnPasarelaPago" layoutX="151.0" layoutY="88.0" prefHeight="872.0" prefWidth="1290.0" style="-fx-background-color: white;">
+            <Pane fx:id="pnPasarelaPago" layoutX="151.0" layoutY="88.0" prefHeight="872.0" prefWidth="1290.0" style="-fx-background-color: white;" visible="false">
                <children>
                   <Pane layoutX="49.0" layoutY="20.0" prefHeight="696.0" prefWidth="529.0" style="-fx-border-color: gray; -fx-background-color: white;">
                      <children>
@@ -584,6 +664,400 @@
                               <Font size="14.0" />
                            </font>
                         </TextField>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="paneContentLoggout" layoutX="1188.0" layoutY="80.0" prefHeight="308.0" prefWidth="236.0" style="-fx-background-color: white; -fx-border-color: white gray gray gray;" visible="false">
+               <children>
+                  <Pane layoutX="44.0" layoutY="14.0" prefHeight="145.0" prefWidth="148.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagen/usuario.png" />
+                           </image>
+                        </ImageView>
+                     </children></Pane>
+                  <Text fx:id="textoUsuario2" layoutX="75.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="64.0" layoutY="263.0" mnemonicParsing="false" onMouseClicked="#btnCerrarSesion_Clicked" style="-fx-background-color: black; -fx-background-radius: 10;" text="Cerrar Sesion" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="pnDescControlPlay" layoutX="154.0" layoutY="88.0" prefHeight="872.0" prefWidth="1290.0" style="-fx-background-color: white;" visible="false">
+               <children>
+                  <Pane layoutX="-4.0" layoutY="-2.0" prefHeight="865.0" prefWidth="1284.0" style="-fx-background-color: white;">
+                     <children>
+                        <ImageView fitHeight="308.0" fitWidth="322.0" layoutX="429.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagen/mando.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="392.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Control Play 5 Pro">
+                           <font>
+                              <Font name="System Bold" size="42.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#2c2c2c" layoutX="503.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$380.000">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="101.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Text>
+                        <TextArea editable="false" layoutX="89.0" layoutY="434.0" prefHeight="282.0" prefWidth="825.0" style="-fx-background-color: white; -fx-border-color: white;" text="Experimenta todas las funciones de inmersión del control inalámbrico DualSense, &#10;incluyendo la retroalimentación háptica, los gatillos adaptativos, un micrófono &#10;integrado, los controles de movimiento y más en los títulos compatibles.&#10;&#10;Disfruta de la misma comodidad característica del control inalámbrico DualSense &#10;original, ahora mejorada con agarres interiores antideslizantes. Ideal para largas &#10;sesiones de juegos de un solo jugador y para mantener la comodidad durante el &#10;juego competitivo intenso.">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </TextArea>
+                        <Button fx:id="btnAñadirAlCarrito2" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="pnDescTecladoGamerOptico" layoutX="152.0" layoutY="98.0" prefHeight="860.0" prefWidth="1292.0" style="-fx-background-color: white;" visible="false">
+               <children>
+                  <Pane layoutY="-8.0" prefHeight="871.0" prefWidth="1280.0" style="-fx-background-color: white;">
+                     <children>
+                        <ImageView fitHeight="308.0" fitWidth="322.0" layoutX="429.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagen/tecladoN.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="388.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Teclado Gamer Optico">
+                           <font>
+                              <Font name="System Bold" size="42.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#2c2c2c" layoutX="499.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$540.000">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="101.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Text>
+                        <TextArea editable="false" layoutX="81.0" layoutY="445.0" prefHeight="282.0" prefWidth="835.0" style="-fx-background-color: white; -fx-border-color: white;" text="Este teclado SteelSeries de alto rendimiento permite que puedas disfrutar de &#10;horas ilimitadas de juegos. Está diseñado especialmente para que puedas expresar&#10;tanto tus habilidades como tu estilo. Podrás mejorar tu experiencia de gaming, ya &#10;seas un aficionado o todo un experto, y hacer que tus jugadas alcancen otro nivel.&#10;">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </TextArea>
+                        <Button fx:id="btnAñadirAlCarrito21" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="pnDescTecladoGamerRedragon" layoutX="151.0" layoutY="98.0" prefHeight="860.0" prefWidth="1292.0" style="-fx-background-color: white;" visible="false">
+               <children>
+                  <Pane layoutY="-8.0" prefHeight="871.0" prefWidth="1280.0" style="-fx-background-color: white;">
+                     <children>
+                        <ImageView fitHeight="308.0" fitWidth="322.0" layoutX="429.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagen/tecladoB.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="346.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Teclado Gamer Redragon">
+                           <font>
+                              <Font name="System Bold" size="42.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#2c2c2c" layoutX="499.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$350.000">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="101.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Text>
+                        <TextArea editable="false" layoutX="81.0" layoutY="445.0" prefHeight="282.0" prefWidth="835.0" style="-fx-background-color: white; -fx-border-color: white;" text="Este teclado Redragon es el mejor complemento para hacer todo tipo de &#10;actividades. Es cómodo y práctico al momento de redactar documentos, &#10;navegar y hacer búsquedas por internet, ya sea en tu trabajo o en la comodidad &#10;del hogar.&#10;Distinción a todo color&#10;Su retroiluminación da un toque diferente a tu equipo y resalta su composición &#10;cuando se utiliza en espacios poco iluminados.&#10;">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </TextArea>
+                        <Button fx:id="btnAñadirAlCarrito211" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="pnDescAuricularesLogitech" layoutX="151.0" layoutY="96.0" prefHeight="862.0" prefWidth="1290.0" style="-fx-background-color: white;" visible="false">
+               <children>
+                  <Pane layoutY="-8.0" prefHeight="871.0" prefWidth="1280.0" style="-fx-background-color: white;">
+                     <children>
+                        <ImageView fitHeight="308.0" fitWidth="322.0" layoutX="429.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagen/cascos.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="346.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Auriculares Logitech G335">
+                           <font>
+                              <Font name="System Bold" size="42.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#2c2c2c" layoutX="499.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$270.000">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="101.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Text>
+                        <TextArea editable="false" layoutX="81.0" layoutY="445.0" prefHeight="282.0" prefWidth="835.0" style="-fx-background-color: white; -fx-border-color: white;" text="Este teclado Redragon es el mejor complemento para hacer todo tipo de &#10;actividades. Es cómodo y práctico al momento de redactar documentos, &#10;navegar y hacer búsquedas por internet, ya sea en tu trabajo o en la comodidad &#10;del hogar.&#10;Distinción a todo color&#10;Su retroiluminación da un toque diferente a tu equipo y resalta su composición &#10;cuando se utiliza en espacios poco iluminados.&#10;">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </TextArea>
+                        <Button fx:id="btnAñadirAlCarrito2111" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="pnDescMonitorGamer" layoutX="153.0" layoutY="96.0" prefHeight="864.0" prefWidth="1288.0" style="-fx-background-color: white;" visible="false">
+               <children>
+                  <Pane layoutY="-8.0" prefHeight="871.0" prefWidth="1280.0" style="-fx-background-color: white;">
+                     <children>
+                        <ImageView fitHeight="308.0" fitWidth="322.0" layoutX="429.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagen/monitor.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="393.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monitor Gamer 32&quot;">
+                           <font>
+                              <Font name="System Bold" size="42.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#2c2c2c" layoutX="499.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$400.000">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="101.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Text>
+                        <TextArea editable="false" layoutX="81.0" layoutY="445.0" prefHeight="282.0" prefWidth="835.0" style="-fx-background-color: white; -fx-border-color: white;" text="Con tu pantalla LED no solo ahorrarás energía, ya que su consumo es bajo, sino &#10;que podrás ver colores nítidos y definidos en tus películas o series favoritas.&#10;Este monitor de 32&quot; te proporcionará comodidad para estudiar, trabajar o ver &#10;una película en tus tiempos de ocio. Su resolución de 1920 x 1080 te permitirá &#10;disfrutar de momentos únicos gracias a una imagen de alta fidelidad. &#10;Su tiempo de respuesta de 6.5 ms lo hace ideal para gamers y cinéfilos porque &#10;es capaz de mostrar imágenes en movimiento sin halos o bordes borrosos.&#10;">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </TextArea>
+                        <Button fx:id="btnAñadirAlCarrito21111" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="pnDescAuricularesG935" layoutX="155.0" layoutY="106.0" prefHeight="848.0" prefWidth="1288.0" style="-fx-background-color: white;" visible="false">
+               <children>
+                  <Pane layoutX="-4.0" layoutY="-16.0" prefHeight="864.0" prefWidth="1288.0" style="-fx-background-color: white;">
+                     <children>
+                        <ImageView fitHeight="308.0" fitWidth="322.0" layoutX="429.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagen/G935.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="429.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logitech G935">
+                           <font>
+                              <Font name="System Bold" size="42.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#2c2c2c" layoutX="499.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$750.000">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="101.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Text>
+                        <TextArea editable="false" layoutX="55.0" layoutY="445.0" prefHeight="383.0" prefWidth="861.0" style="-fx-background-color: white; -fx-border-color: white;" text="Lleva tu experiencia de juego al siguiente nivel con los Logitech G935, los auriculares &#10;inalámbricos de alto rendimiento diseñados para gamers que exigen potencia, precisión y &#10;comodidad sin límites.&#10;🔹 Características destacadas:&#10;Tecnología DTS Headphone:X 2.0: sonido envolvente 7.1 de próxima generación para una &#10;inmersión total&#10;Drivers Pro-G de 50 mm: audio detallado, bajos potentes y agudos nítidos&#10;Conectividad inalámbrica 2.4 GHz: hasta 12 horas de autonomía sin interrupciones&#10;Iluminación RGB LIGHTSYNC personalizable&#10;Micrófono de varilla con cancelación de ruido y replegable&#10;Controles integrados en el auricular para ajustes rápidos de volumen, mute y más&#10;Compatible con PC, PS4, PS5, Xbox One (modo cableado), Nintendo Switch y dispositivos.&#10;">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </TextArea>
+                        <Button fx:id="btnAñadirAlCarrito211111" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="pnDescMonitorAOC" layoutX="165.0" layoutY="116.0" prefHeight="842.0" prefWidth="1276.0" style="-fx-background-color: white;" visible="false">
+               <children>
+                  <Pane layoutX="-14.0" layoutY="-26.0" prefHeight="870.0" prefWidth="1280.0" style="-fx-background-color: white;">
+                     <children>
+                        <ImageView fitHeight="308.0" fitWidth="322.0" layoutX="429.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagen/monitor2.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="381.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monitor Gamer AOC">
+                           <font>
+                              <Font name="System Bold" size="42.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#2c2c2c" layoutX="499.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$700.000">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="101.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Text>
+                        <TextArea editable="false" layoutX="44.0" layoutY="445.0" prefHeight="383.0" prefWidth="872.0" style="-fx-background-color: white; -fx-border-color: white;" text="Eleva tu juego con el Monitor Gaming AOC 24G4E&#10;Con su pantalla de 23.8 pulgadas y resolución Full HD 1920 x 1080, cada píxel cobra vida con &#10;claridad y detalle impresionantes.&#10;La frecuencia de actualización de 180Hz y el tiempo de respuesta ultrarrápido de 1 ms&#10; garantizan partidas sin interrupciones y con fluidez increíble. Las tecnologías Adaptive Sync &#10;y FreeSync sincronizan la tasa de refresco del monitor con tu tarjeta gráfica, eliminando el &#10;tearing y el stuttering para una experiencia visual impecable.&#10;El modo HDR mejora el rango dinámico, mostrando colores vibrantes y contrastes intensos &#10;que hacen que tus juegos favoritos se vean más impresionantes. Además, la tecnología Flicker-Free &#10;y la reducción de luz azul cuidan tus ojos durante largas sesiones de juego, permitiéndote jugar &#10;más tiempo sin fatiga ocular.">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </TextArea>
+                        <Button fx:id="btnAñadirAlCarrito2111111" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="pnDescMicrofono" layoutX="175.0" layoutY="126.0" prefHeight="833.0" prefWidth="1266.0" style="-fx-background-color: white;" visible="false">
+               <children>
+                  <Pane layoutX="-25.0" layoutY="-37.0" prefHeight="865.0" prefWidth="1292.0" style="-fx-background-color: white;">
+                     <children>
+                        <ImageView fitHeight="308.0" fitWidth="322.0" layoutX="443.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagen/microfono.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="337.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Micrófono VSG Omkara">
+                           <font>
+                              <Font name="System Bold" size="42.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#2c2c2c" layoutX="499.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$239.000">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="101.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Text>
+                        <TextArea editable="false" layoutX="44.0" layoutY="445.0" prefHeight="383.0" prefWidth="872.0" style="-fx-background-color: white; -fx-border-color: white;" text="Omkara se enfoca con precisión en tu voz, sonido o mensaje. Estos llegarán directamente &#10;al micrófono, por lo que el ruido ambiente se aislará de su enfoque. Tendrás el control &#10;absoluto de cada palabra, nota o respiración.&#10;A la hora de mutear, la acción será completamente silenciosa. Está equipado con un botón &#10;de mute completamente silencioso y táctil. Tu última expresión será el punto y final, ese &#10;cierre magistral que dejará a tu mensaje brillar con éxito.&#10;Para ti que deseas alzar tu verdadera voz al mundo. Ya seas streamer, caster, músico, &#10;estudiante, trabajador, gamer profesional o casual; Omkara es esa conexión que se &#10;convierte en la base fundamental de tu mensaje.">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </TextArea>
+                        <Button fx:id="btnAñadirAlCarrito21111111" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="pnDescCamaraWeb" layoutX="185.0" layoutY="136.0" prefHeight="820.0" prefWidth="1257.0" style="-fx-background-color: white;" visible="false">
+               <children>
+                  <Pane layoutX="-35.0" layoutY="-45.0" prefHeight="865.0" prefWidth="1290.0" style="-fx-background-color: white;">
+                     <children>
+                        <ImageView fitHeight="308.0" fitWidth="322.0" layoutX="409.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imagen/Camara.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="352.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Camara Web C270 HD">
+                           <font>
+                              <Font name="System Bold" size="42.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#2c2c2c" layoutX="499.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$120.000">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="101.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Text>
+                        <TextArea editable="false" layoutX="44.0" layoutY="445.0" prefHeight="383.0" prefWidth="872.0" style="-fx-background-color: white; -fx-border-color: white;" text="Tecnología Logitech Fluid Crystal™. Vídeo más fluido, imágenes más nítidas, colores más &#10;vivos y sonido más claro en condiciones reales.&#10;Videoconferencias HD 720p en pantalla panorámica en la mayoría de aplicaciones de &#10;mensajería instantánea.&#10;Sus conocidos le verán tal como es en fotos de 3 megapíxeles.&#10;Se le escuchará alto y claro gracias al micrófono integrado que reduce el ruido de fondo.&#10;Con vídeo HD 720p en la mayoría de aplicaciones de mensajería instantánea.&#10;Le ofrece conversaciones con un sonido nítido y sin molestos ruidos de fondo.&#10;Aunque la videoconferencia se haga en un entorno con luz escasa o posterior, la cámara &#10;realizará ajustes automáticos para producir la mejor imagen posible.">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </TextArea>
+                        <Button fx:id="btnAñadirAlCarrito211111111" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
                      </children>
                   </Pane>
                </children>
