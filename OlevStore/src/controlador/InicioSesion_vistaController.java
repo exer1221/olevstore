@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -70,10 +71,15 @@ public class InicioSesion_vistaController implements Initializable {
     private void iniciarSesion() {
         String correo = txtCorreoIngreso.getText().trim();
         String pass = txtPasswordIngreso.getText().trim();
-        if (listaUsuarios.validarUsuario(correo, pass)) {
-            System.out.println("Bienvenido " + correo);
 
-            //Aqui muestro la paginaPrincipal
+        if (listaUsuarios.validarUsuario(correo, pass)) {
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("Inicio de sesión");
+            alerta.setHeaderText(null);
+            alerta.setContentText("¡Bienvenido, " + correo + "!");
+            alerta.showAndWait();
+
+            // Aquí muestro la página principal
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/vista/PestañaPrincipal_vista.fxml"));
                 Parent root = loader.load();
@@ -92,32 +98,64 @@ public class InicioSesion_vistaController implements Initializable {
                 Stage miStage = (Stage) this.btnIngresar.getScene().getWindow();
                 miStage.close();
             } catch (IOException ex) {
-                //Logger.getLogger(InicioSesion_vistaController.class.getName()).log(Level.SEVERE, null, ex);
+                //No se, una excepcion xD
             }
 
         } else {
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("Credenciales incorrectas");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Correo o contraseña incorrectos.");
+            alerta.showAndWait();
+
             textoError1.setText("Error detectado en el correo");
             textoError2.setText("Error detectado en la password");
 
             textoError1.setVisible(true);
             textoError2.setVisible(true);
         }
+
     }
 
     //Este es le metodo para registrar un nuevo usuario :v
     private boolean registrarUsuario() {
+
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+
         String correo = txtCorreoCuentaNueva.getText().trim();
         String pass = txtPasswordCrear.getText().trim();
 
-        if (!correo.isEmpty() && !pass.isEmpty()) {
-            listaUsuarios.agregarUsuario(correo, pass);
-            listaUsuarios.guardarEnArchivo(RUTA);
-            System.out.println("Usuario registrado.");
-            return true;
-        } else {
-            System.out.println("Error, posibles campos vacíos");
+        if (correo.isEmpty() || pass.isEmpty()) {
+            alerta.setTitle("Campos Vacíos");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Por favor, completa todos los campos.");
+            alerta.showAndWait();
             return false;
         }
+
+        if (!esCorreoValido(correo)) {
+            alerta.setTitle("Correo Inválido");
+            alerta.setHeaderText(null);
+            alerta.setContentText("El formato del correo ingresado no es válido.");
+            alerta.showAndWait();
+            return false;
+        }
+
+        listaUsuarios.agregarUsuario(correo, pass);
+        listaUsuarios.guardarEnArchivo(RUTA);
+
+        alerta.setTitle("Registro Exitoso");
+        alerta.setHeaderText(null);
+        alerta.setContentText("El usuario ha sido registrado correctamente.");
+        alerta.showAndWait();
+
+        return true;
+    }
+
+    //Esto es para validar si realmente lo que esta ingresando es un correo y no una simple cadena de texto :v
+    private boolean esCorreoValido(String correo) {
+        String regexCorreo = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
+        return correo.matches(regexCorreo);
     }
 
     @FXML
