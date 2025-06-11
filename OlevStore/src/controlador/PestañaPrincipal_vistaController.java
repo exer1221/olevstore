@@ -1,5 +1,7 @@
 package controlador;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -9,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -16,6 +19,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import modelo.Carrito;
+import modelo.Producto;
 
 public class PestañaPrincipal_vistaController implements Initializable {
 
@@ -116,6 +121,10 @@ public class PestañaPrincipal_vistaController implements Initializable {
     private Pane pnDescCamaraWeb;
     @FXML
     private Button btnAñadirAlCarrito211111111;
+
+    //Cositas del carrito de compras
+    private Carrito carrito = new Carrito();
+    private String correoUsuario = "usuario@ejemplo.com";
 
     /**
      * Initializes the controller class.
@@ -421,6 +430,32 @@ public class PestañaPrincipal_vistaController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    //Aqui voy a empezar a trabajar en el carrito de compras
+    public void registroCarrito(Carrito carrito, String correoUsuario) {
+        String nombreArchivo = "src/ArchivosTXT/carrito_" + correoUsuario + ".txt";
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo, true))) {
+            writer.write("----- Compra realizada -----\n");
+            for (Producto p : carrito.getProductos()) {
+                writer.write(p.toString() + "\n");
+            }
+            writer.write("----------------------------\n\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void agregarProductoAlCarrito(String nombre, double precio) {
+        Producto producto = new Producto(nombre, precio);
+        carrito.agregarProducto(producto);
+
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("Producto agregado");
+        alerta.setHeaderText(null);
+        alerta.setContentText(nombre + " agregado al carrito.");
+        alerta.showAndWait();
     }
 
 }
