@@ -85,6 +85,7 @@ public class InicioSesion_vistaController implements Initializable {
                 Parent root = loader.load();
 
                 PestañaPrincipal_vistaController controller = loader.getController();
+                controller.setCorreoUsuario(correo); // <--- aquí se pasa el correo del usuario
 
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();

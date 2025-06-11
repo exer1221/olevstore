@@ -138,10 +138,13 @@
                                                    <children>
                                                       <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../imagen/carrito-de-compra-anadir.png" />
+                                                            <Image url="@../imagen/corazon.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
                                                 </Pane>
                                              </children>
                                           </Pane>
@@ -166,10 +169,13 @@
                                                    <children>
                                                       <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../imagen/carrito-de-compra-anadir.png" />
+                                                            <Image url="@../imagen/corazon.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
                                                 </Pane>
                                              </children>
                                           </Pane>
@@ -194,10 +200,13 @@
                                                    <children>
                                                       <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../imagen/carrito-de-compra-anadir.png" />
+                                                            <Image url="@../imagen/corazon.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
                                                 </Pane>
                                              </children>
                                           </Pane>
@@ -222,8 +231,11 @@
                                                    <children>
                                                       <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../imagen/carrito-de-compra-anadir.png" />
+                                                            <Image url="@../imagen/corazon.png" />
                                                          </image>
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
                                                       </ImageView>
                                                    </children>
                                                 </Pane>
@@ -250,10 +262,13 @@
                                                    <children>
                                                       <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../imagen/carrito-de-compra-anadir.png" />
+                                                            <Image url="@../imagen/corazon.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
                                                 </Pane>
                                              </children>
                                           </Pane>
@@ -278,10 +293,13 @@
                                                    <children>
                                                       <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../imagen/carrito-de-compra-anadir.png" />
+                                                            <Image url="@../imagen/corazon.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
                                                 </Pane>
                                              </children>
                                           </Pane>
@@ -306,10 +324,16 @@
                                                    <children>
                                                       <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../imagen/carrito-de-compra-anadir.png" />
+                                                            <Image url="@../imagen/corazon.png" />
                                                          </image>
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
                                                       </ImageView>
                                                    </children>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
                                                 </Pane>
                                              </children>
                                           </Pane>
@@ -334,10 +358,16 @@
                                                    <children>
                                                       <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../imagen/carrito-de-compra-anadir.png" />
+                                                            <Image url="@../imagen/corazon.png" />
                                                          </image>
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
                                                       </ImageView>
                                                    </children>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
                                                 </Pane>
                                              </children>
                                           </Pane>
@@ -362,8 +392,11 @@
                                                    <children>
                                                       <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../imagen/carrito-de-compra-anadir.png" />
+                                                            <Image url="@../imagen/corazon.png" />
                                                          </image>
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
                                                       </ImageView>
                                                    </children>
                                                 </Pane>
@@ -390,8 +423,11 @@
                                                    <children>
                                                       <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../imagen/carrito-de-compra-anadir.png" />
+                                                            <Image url="@../imagen/corazon.png" />
                                                          </image>
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
                                                       </ImageView>
                                                    </children>
                                                 </Pane>
@@ -418,10 +454,13 @@
                                                    <children>
                                                       <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../imagen/carrito-de-compra-anadir.png" />
+                                                            <Image url="@../imagen/corazon.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
                                                 </Pane>
                                              </children>
                                           </Pane>
@@ -446,10 +485,13 @@
                                                    <children>
                                                       <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../imagen/carrito-de-compra-anadir.png" />
+                                                            <Image url="@../imagen/corazon.png" />
                                                          </image>
                                                       </ImageView>
                                                    </children>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
                                                 </Pane>
                                              </children>
                                           </Pane>
@@ -492,7 +534,7 @@
                               <Font size="22.0" />
                            </font>
                         </TextArea>
-                        <Button fx:id="btnAñadirAlCarrito" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
+                        <Button fx:id="btnAñadirAlCarrito" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" onAction="#AggControlXboxCarrito" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -533,7 +575,7 @@
                               <Font size="22.0" />
                            </font>
                         </TextArea>
-                        <Button fx:id="btnAñadirAlCarrito1" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
+                        <Button fx:id="btnAñadirAlCarrito1" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" onAction="#AgregarMouseSharkCarrito" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -574,7 +616,7 @@
                               <Font size="22.0" />
                            </font>
                         </TextArea>
-                        <Button fx:id="btnAñadirAlCarrito11" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
+                        <Button fx:id="btnAñadirAlCarrito11" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" onAction="#AgregarMouseLogitechCarrito" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -586,7 +628,7 @@
                   </Pane>
                </children>
             </Pane>
-            <Pane fx:id="paneCarritoCompras" layoutX="153.0" layoutY="90.0" prefHeight="870.0" prefWidth="1289.0" style="-fx-background-color: white;">
+            <Pane fx:id="paneCarritoCompras" layoutX="153.0" layoutY="90.0" prefHeight="870.0" prefWidth="1289.0" style="-fx-background-color: white;" visible="false">
                <children>
                   <AnchorPane prefHeight="868.0" prefWidth="1288.0">
                      <children>
@@ -832,7 +874,7 @@
                               <Font size="22.0" />
                            </font>
                         </TextArea>
-                        <Button fx:id="btnAñadirAlCarrito2" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
+                        <Button fx:id="btnAñadirAlCarrito2" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" onAction="#AgregarControlPlayStationCarrito" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -873,7 +915,7 @@
                               <Font size="22.0" />
                            </font>
                         </TextArea>
-                        <Button fx:id="btnAñadirAlCarrito21" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
+                        <Button fx:id="btnAñadirAlCarrito21" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" onAction="#AgregarTecladoNegroCarrito" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -914,7 +956,7 @@
                               <Font size="22.0" />
                            </font>
                         </TextArea>
-                        <Button fx:id="btnAñadirAlCarrito211" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
+                        <Button fx:id="btnAñadirAlCarrito211" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" onAction="#AgregarTecladoBlancoCarrito" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -955,7 +997,7 @@
                               <Font size="22.0" />
                            </font>
                         </TextArea>
-                        <Button fx:id="btnAñadirAlCarrito2111" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
+                        <Button fx:id="btnAñadirAlCarrito2111" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" onAction="#AgregarAuricularesG335Carrito" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -996,7 +1038,7 @@
                               <Font size="22.0" />
                            </font>
                         </TextArea>
-                        <Button fx:id="btnAñadirAlCarrito21111" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
+                        <Button fx:id="btnAñadirAlCarrito21111" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" onAction="#AgregarMonitorGamerCarrito" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -1037,7 +1079,7 @@
                               <Font size="19.0" />
                            </font>
                         </TextArea>
-                        <Button fx:id="btnAñadirAlCarrito211111" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
+                        <Button fx:id="btnAñadirAlCarrito211111" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" onAction="#AgregarAuricularesG935Carrito" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -1078,7 +1120,7 @@
                               <Font size="19.0" />
                            </font>
                         </TextArea>
-                        <Button fx:id="btnAñadirAlCarrito2111111" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
+                        <Button fx:id="btnAñadirAlCarrito2111111" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" onAction="#AgregarMonitorAOCCarrito" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -1119,7 +1161,7 @@
                               <Font size="19.0" />
                            </font>
                         </TextArea>
-                        <Button fx:id="btnAñadirAlCarrito21111111" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
+                        <Button fx:id="btnAñadirAlCarrito21111111" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" onAction="#AgregarMicrofonoCarrito" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -1160,7 +1202,7 @@
                               <Font size="19.0" />
                            </font>
                         </TextArea>
-                        <Button fx:id="btnAñadirAlCarrito211111111" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
+                        <Button fx:id="btnAñadirAlCarrito211111111" layoutX="928.0" layoutY="647.0" mnemonicParsing="false" onAction="#agregarCamaraWebCarrito" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Añadir Al Carrito" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>

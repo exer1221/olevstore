@@ -1,10 +1,12 @@
 package controlador;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -124,7 +126,7 @@ public class PestañaPrincipal_vistaController implements Initializable {
 
     //Cositas del carrito de compras
     private Carrito carrito = new Carrito();
-    private String correoUsuario = "usuario@ejemplo.com";
+    private String correoUsuario;
 
     /**
      * Initializes the controller class.
@@ -434,28 +436,126 @@ public class PestañaPrincipal_vistaController implements Initializable {
 
     //Aqui voy a empezar a trabajar en el carrito de compras
     public void registroCarrito(Carrito carrito, String correoUsuario) {
+
         String nombreArchivo = "src/ArchivosTXT/carrito_" + correoUsuario + ".txt";
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo, true))) {
-            writer.write("----- Compra realizada -----\n");
+        File carpeta = new File("src/ArchivosTXT");
+        if (!carpeta.exists()) {
+            boolean creada = carpeta.mkdirs();
+        } else {
+            System.out.println(" Carpeta 'ArchivosTXT' ya existe.");
+        }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo, false))) {
+
+            writer.write("----- Productos actualmente en el carrito -----\n");
             for (Producto p : carrito.getProductos()) {
                 writer.write(p.toString() + "\n");
             }
-            writer.write("----------------------------\n\n");
+            writer.write("------------------------------------------------\n\n");
+
+            System.out.println("[Paso 7] Archivo actualizado en: " + new File(nombreArchivo).getAbsolutePath());
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void agregarProductoAlCarrito(String nombre, double precio) {
+    public void setCorreoUsuario(String correo) {
+        this.correoUsuario = correo;
+    }
+
+    private void procesarProducto(String nombre, double precio) {
         Producto producto = new Producto(nombre, precio);
         carrito.agregarProducto(producto);
+
+        registroCarrito(carrito, correoUsuario);
 
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Producto agregado");
         alerta.setHeaderText(null);
         alerta.setContentText(nombre + " agregado al carrito.");
         alerta.showAndWait();
+    }
+
+    @FXML
+    private void finalizarCompra(ActionEvent event) {
+        if (!carrito.estaVacio()) {
+            registroCarrito(carrito, correoUsuario);
+            carrito.vaciar();
+
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("Compra finalizada");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Compra registrada exitosamente.");
+            alerta.showAndWait();
+        } else {
+            Alert alerta = new Alert(Alert.AlertType.WARNING);
+            alerta.setTitle("Carrito vacío");
+            alerta.setHeaderText(null);
+            alerta.setContentText("No hay productos en el carrito.");
+            alerta.showAndWait();
+        }
+    }
+
+    @FXML
+    private void AggControlXboxCarrito(ActionEvent event) {
+        procesarProducto("Control XBOX Series S", 350000);
+    }
+
+    @FXML
+    private void AgregarMouseSharkCarrito(ActionEvent event) {
+        procesarProducto("Mouse Attack Shark x3", 150000);
+    }
+
+    @FXML
+    private void AgregarMouseLogitechCarrito(ActionEvent event) {
+        procesarProducto("Mouse Logitech G203", 110000);
+    }
+
+    @FXML
+    private void AgregarControlPlayStationCarrito(ActionEvent event) {
+        procesarProducto("Control Play 5 Pro", 380000);
+    }
+
+    @FXML
+    private void AgregarTecladoNegroCarrito(ActionEvent event) {
+        procesarProducto("Teclado Gamer Óptico", 540000);
+    }
+
+    @FXML
+    private void AgregarTecladoBlancoCarrito(ActionEvent event) {
+        procesarProducto("Teclado Gamer Redragon", 350000);
+    }
+
+    @FXML
+    private void AgregarAuricularesG335Carrito(ActionEvent event) {
+        procesarProducto("Auriculares Logitech G335", 270000);
+    }
+
+    @FXML
+    private void AgregarMonitorGamerCarrito(ActionEvent event) {
+        procesarProducto("Monitor Gamer 32", 400000);
+    }
+
+    @FXML
+    private void AgregarAuricularesG935Carrito(ActionEvent event) {
+        procesarProducto("Logitech G935", 750000);
+    }
+
+    @FXML
+    private void AgregarMonitorAOCCarrito(ActionEvent event) {
+        procesarProducto("Monitor Gamer AOC", 700000);
+    }
+
+    @FXML
+    private void AgregarMicrofonoCarrito(ActionEvent event) {
+        procesarProducto("Micrófono VSG Omkara", 239000);
+    }
+
+    @FXML
+    private void agregarCamaraWebCarrito(ActionEvent event) {
+        procesarProducto("Camara Web C270 HD", 120000);
     }
 
 }
