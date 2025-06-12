@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -141,6 +142,32 @@ public class PestañaPrincipal_vistaController implements Initializable {
 
     //Cositas para la lista de deseos
     private Deseos deseos = new Deseos();
+    @FXML
+    private Button btnFavControlXbox;
+    @FXML
+    private Button btnFavMouseAttack;
+    @FXML
+    private Button btnFavMouseLogitech;
+    @FXML
+    private Button btnFavControlPlay;
+    @FXML
+    private Button btnFavTecladoNegro;
+    @FXML
+    private Button btnFavTecladoBlanco;
+    @FXML
+    private Button btnFavAuricularesG335;
+    @FXML
+    private Button btnFavMonitor1;
+    @FXML
+    private Button btnFavAuricularesG935;
+    @FXML
+    private Button btnFavMonitorAOC;
+    @FXML
+    private Button btnFavMicrofono;
+    @FXML
+    private Button btnFavCamara;
+    @FXML
+    private VBox contenedorListaDeseos;
 
     /**
      * Initializes the controller class.
@@ -220,6 +247,9 @@ public class PestañaPrincipal_vistaController implements Initializable {
         pnBtnInicio.setVisible(true);
         pnBtnCarritoCompra.setVisible(false);
         pnBtnListaDeseados.setVisible(false);
+
+        //Logica para que la vaina esa funcione (Lista de deseos) AJAJAJKAKJJA
+        cargarListaDeseos(correoUsuario, contenedorListaDeseos);
     }
 
     @FXML
@@ -516,7 +546,7 @@ public class PestañaPrincipal_vistaController implements Initializable {
             return;
         }
 
-        contenedorProductos.getChildren().clear(); // Limpiar productos anteriores
+        contenedorProductos.getChildren().clear();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
             String linea;
@@ -621,53 +651,12 @@ public class PestañaPrincipal_vistaController implements Initializable {
     }
 
     //AQUI EMPIEZO CON LAS DIABLURAS DE LA LISTA DE DESEOS MUAKAKAKKAKA
-    public void guardarListaDeseos(Deseos deseos, String correoUsuario) {
-        String archivo = "src/ArchivosTXT/lista_" + correoUsuario + ".txt";
-
-        File carpeta = new File("src/ArchivosTXT");
-        if (!carpeta.exists()) {
-            carpeta.mkdirs();
-        }
-
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo, false))) {
-            for (Producto p : deseos.getProductos()) {
-                writer.write(p.getNombre() + ";" + p.getPrecio() + ";" + p.getRutaImagen() + "\n");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void agregarADeseos(String nombre, double precio, String rutaImagen) {
-        Producto producto = new Producto(nombre, precio, rutaImagen);
-
-        if (carrito.getProductos().contains(producto)) {
-            Alert alerta = new Alert(Alert.AlertType.WARNING);
-            alerta.setTitle("Conflicto");
-            alerta.setHeaderText(null);
-            alerta.setContentText("El producto ya está en el carrito.");
-            alerta.showAndWait();
-            return;
-        }
-
-        if (!deseos.getProductos().contains(producto)) {
-            deseos.agregarProducto(producto);
-            guardarListaDeseos(deseos, correoUsuario);
-
-            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-            alerta.setTitle("Agregado");
-            alerta.setHeaderText(null);
-            alerta.setContentText(nombre + " agregado a la lista de deseos.");
-            alerta.showAndWait();
-        }
-    }
-
-    public void mostrarListaDeseos(String correoUsuario, VBox contenedor) {
-        String nombreArchivo = "src/ArchivosTXT/deseos_" + correoUsuario + ".txt";
+    public void cargarListaDeseos(String correoUsuario, VBox contenedor) {
+        String nombreArchivo = "src/ArchivosTXT/lista_" + correoUsuario + ".txt";
         File archivo = new File(nombreArchivo);
 
         if (!archivo.exists()) {
-            System.out.println("No hay lista de deseos para este usuario.");
+            System.out.println("No existe la lista de deseos para este usuario.");
             return;
         }
 
@@ -676,13 +665,9 @@ public class PestañaPrincipal_vistaController implements Initializable {
         try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
             String linea;
             while ((linea = reader.readLine()) != null) {
-                String[] partes = linea.split(" \\| ");
-                if (partes.length == 3) {
-                    String nombre = partes[0];
-                    double precio = Double.parseDouble(partes[1].replace("$", "").replace(",", "").trim());
-                    String rutaImagen = partes[2];
-
-                    HBox item = crearItemProducto(nombre, precio, rutaImagen);
+                Producto producto = Producto.fromString(linea);
+                if (producto != null) {
+                    HBox item = crearItemProducto(producto); // ya lo tienes
                     contenedor.getChildren().add(item);
                 }
             }
@@ -691,24 +676,105 @@ public class PestañaPrincipal_vistaController implements Initializable {
         }
     }
 
-    private HBox crearItemProducto(String nombre, double precio, String rutaImagen) {
-        HBox caja = new HBox(10);
-        caja.setPadding(new Insets(5));
-        caja.setAlignment(Pos.CENTER_LEFT);
+    private void procesarDeseo(String nombre, double precio, String rutaImagen) {
+        Producto producto = new Producto(nombre, precio, rutaImagen);
 
-        Image imagen = new Image(getClass().getResourceAsStream(rutaImagen));
-        ImageView vistaImagen = new ImageView(imagen);
-        vistaImagen.setFitWidth(60);
-        vistaImagen.setFitHeight(60);
+        if (carrito.getProductos().contains(producto)) {
+            mostrarAlerta("Conflicto", "El producto ya está en el carrito.");
+            return;
+        }
 
-        Label etiquetaNombre = new Label(nombre);
-        etiquetaNombre.setStyle("-fx-font-weight: bold;");
+        if (!deseos.getProductos().contains(producto)) {
+            deseos.agregarProducto(producto);
+            registroListaDeseos(deseos, correoUsuario);
+            mostrarAlerta("Agregado", nombre + " agregado a la lista de deseos.");
+        }
+    }
 
-        Label etiquetaPrecio = new Label("$" + precio);
-        etiquetaPrecio.setPadding(new Insets(0, 0, 0, 10));
+    public void registroListaDeseos(Deseos deseos, String correoUsuario) {
+        String nombreArchivo = "src/ArchivosTXT/lista_" + correoUsuario + ".txt";
 
-        caja.getChildren().addAll(vistaImagen, etiquetaNombre, etiquetaPrecio);
-        return caja;
+        File carpeta = new File("src/ArchivosTXT");
+        if (!carpeta.exists()) {
+            carpeta.mkdirs();
+        }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo, false))) {
+            for (Producto p : deseos.getProductos()) {
+                writer.write(p.toString() + "\n");
+            }
+            System.out.println("Lista de deseos actualizada: " + new File(nombreArchivo).getAbsolutePath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void mostrarAlerta(String titulo, String mensaje) {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensaje);
+        alerta.showAndWait();
+    }
+
+    @FXML
+    private void agregarFavControlXbox(ActionEvent event) {
+        procesarDeseo("Control XBOX Series S", 350000, "imagen/productos/controlXbox.png");
+    }
+
+    @FXML
+    private void agregarFavMouseAttack(ActionEvent event) {
+        procesarDeseo("Mouse Attack Shark x3", 150000, "imagen/productos/mouseSharkTank.png");
+    }
+
+    @FXML
+    private void agregarFavMouseLogitech(ActionEvent event) {
+        procesarDeseo("Mouse Logitech G203", 110000, "imagen/productos/mouseLogitech.png");
+    }
+
+    @FXML
+    private void agregarFavControlPlay(ActionEvent event) {
+        procesarDeseo("Control Play 5 Pro", 380000, "imagen/productos/mandoPlayStation.png");
+    }
+
+    @FXML
+    private void agregarFavTecladoNegro(ActionEvent event) {
+        procesarDeseo("Teclado Gamer Óptico", 540000, "imagen/productos/tecladoNegro.png");
+    }
+
+    @FXML
+    private void agregarFavTecladoBlanco(ActionEvent event) {
+        procesarDeseo("Teclado Gamer Redragon", 350000, "imagen/productos/tecladoBlanco.png");
+    }
+
+    @FXML
+    private void agregarFavAuricularesG335(ActionEvent event) {
+        procesarDeseo("Auriculares Logitech G335", 270000, "imagen/productos/cascos.png");
+    }
+
+    @FXML
+    private void agregarFavMonitor1(ActionEvent event) {
+        procesarDeseo("Monitor Gamer 32", 400000, "imagen/productos/monitor.png");
+    }
+
+    @FXML
+    private void agregarFavAuricularesG935(ActionEvent event) {
+        procesarDeseo("Logitech G935", 750000, "imagen/productos/AuricularesG935.png");
+    }
+
+    @FXML
+    private void agregarFavMonitorAOC(ActionEvent event) {
+        procesarDeseo("Monitor Gamer AOC", 700000, "imagen/productos/monitor2.png");
+    }
+
+    @FXML
+    private void agregarFavMicrofono(ActionEvent event) {
+        procesarDeseo("Micrófono VSG Omkara", 239000, "imagen/productos/microfono.png");
+    }
+
+    @FXML
+    private void agregarFavCamara(ActionEvent event) {
+        procesarDeseo("Camara Web C270 HD", 120000, "imagen/productos/Camara.png");
     }
 
 }
