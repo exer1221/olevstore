@@ -53,6 +53,7 @@ public class InicioSesion_vistaController implements Initializable {
     private TextField txtCorreoCuentaNueva;
 
     //Aqui estoy haciendo lo del registro de usuarios con Nodos y Listas Dobles
+    
     private final String RUTA = "src\\ArchivosTXT\\usuarios.txt";
     private ListaUsuarios listaUsuarios = new ListaUsuarios();
     @FXML
@@ -119,6 +120,7 @@ public class InicioSesion_vistaController implements Initializable {
     }
 
     //Este es le metodo para registrar un nuevo usuario :v
+    
     private boolean registrarUsuario() {
 
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
@@ -154,6 +156,7 @@ public class InicioSesion_vistaController implements Initializable {
     }
 
     //Esto es para validar si realmente lo que esta ingresando es un correo y no una simple cadena de texto :v
+    
     private boolean esCorreoValido(String correo) {
         String regexCorreo = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
         return correo.matches(regexCorreo);
