@@ -31,6 +31,7 @@ import javafx.stage.Stage;
 import modelo.Carrito;
 import modelo.Producto;
 import javafx.geometry.Insets;
+import modelo.Deseos;
 
 public class PestañaPrincipal_vistaController implements Initializable {
 
@@ -131,12 +132,15 @@ public class PestañaPrincipal_vistaController implements Initializable {
     private Pane pnDescCamaraWeb;
     @FXML
     private Button btnAñadirAlCarrito211111111;
+    @FXML
+    private VBox contenedorProductos;
 
     //Cositas del carrito de compras
     private Carrito carrito = new Carrito();
     private String correoUsuario;
-    @FXML
-    private VBox contenedorProductos;
+
+    //Cositas para la lista de deseos
+    private Deseos deseos = new Deseos();
 
     /**
      * Initializes the controller class.
@@ -200,9 +204,8 @@ public class PestañaPrincipal_vistaController implements Initializable {
         paneCarritoCompras.setVisible(true);
 
         paneBarrasBusqueda.setVisible(false);
-        
+
         //Aqui ando cargando el carrito :v
-        
         cargarProductosCarrito(correoUsuario);
     }
 
@@ -615,6 +618,97 @@ public class PestañaPrincipal_vistaController implements Initializable {
     @FXML
     private void agregarCamaraWebCarrito(ActionEvent event) {
         procesarProducto("Camara Web C270 HD", 120000, "imagen/productos/Camara.png");
+    }
+
+    //AQUI EMPIEZO CON LAS DIABLURAS DE LA LISTA DE DESEOS MUAKAKAKKAKA
+    public void guardarListaDeseos(Deseos deseos, String correoUsuario) {
+        String archivo = "src/ArchivosTXT/lista_" + correoUsuario + ".txt";
+
+        File carpeta = new File("src/ArchivosTXT");
+        if (!carpeta.exists()) {
+            carpeta.mkdirs();
+        }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo, false))) {
+            for (Producto p : deseos.getProductos()) {
+                writer.write(p.getNombre() + ";" + p.getPrecio() + ";" + p.getRutaImagen() + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void agregarADeseos(String nombre, double precio, String rutaImagen) {
+        Producto producto = new Producto(nombre, precio, rutaImagen);
+
+        if (carrito.getProductos().contains(producto)) {
+            Alert alerta = new Alert(Alert.AlertType.WARNING);
+            alerta.setTitle("Conflicto");
+            alerta.setHeaderText(null);
+            alerta.setContentText("El producto ya está en el carrito.");
+            alerta.showAndWait();
+            return;
+        }
+
+        if (!deseos.getProductos().contains(producto)) {
+            deseos.agregarProducto(producto);
+            guardarListaDeseos(deseos, correoUsuario);
+
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("Agregado");
+            alerta.setHeaderText(null);
+            alerta.setContentText(nombre + " agregado a la lista de deseos.");
+            alerta.showAndWait();
+        }
+    }
+
+    public void mostrarListaDeseos(String correoUsuario, VBox contenedor) {
+        String nombreArchivo = "src/ArchivosTXT/deseos_" + correoUsuario + ".txt";
+        File archivo = new File(nombreArchivo);
+
+        if (!archivo.exists()) {
+            System.out.println("No hay lista de deseos para este usuario.");
+            return;
+        }
+
+        contenedor.getChildren().clear();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                String[] partes = linea.split(" \\| ");
+                if (partes.length == 3) {
+                    String nombre = partes[0];
+                    double precio = Double.parseDouble(partes[1].replace("$", "").replace(",", "").trim());
+                    String rutaImagen = partes[2];
+
+                    HBox item = crearItemProducto(nombre, precio, rutaImagen);
+                    contenedor.getChildren().add(item);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private HBox crearItemProducto(String nombre, double precio, String rutaImagen) {
+        HBox caja = new HBox(10);
+        caja.setPadding(new Insets(5));
+        caja.setAlignment(Pos.CENTER_LEFT);
+
+        Image imagen = new Image(getClass().getResourceAsStream(rutaImagen));
+        ImageView vistaImagen = new ImageView(imagen);
+        vistaImagen.setFitWidth(60);
+        vistaImagen.setFitHeight(60);
+
+        Label etiquetaNombre = new Label(nombre);
+        etiquetaNombre.setStyle("-fx-font-weight: bold;");
+
+        Label etiquetaPrecio = new Label("$" + precio);
+        etiquetaPrecio.setPadding(new Insets(0, 0, 0, 10));
+
+        caja.getChildren().addAll(vistaImagen, etiquetaNombre, etiquetaPrecio);
+        return caja;
     }
 
 }

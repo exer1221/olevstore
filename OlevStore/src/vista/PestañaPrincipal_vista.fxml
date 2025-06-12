@@ -96,7 +96,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Pane>
-            <Pane fx:id="paneCatalogo" layoutX="148.0" layoutY="88.0" prefHeight="872.0" prefWidth="1294.0" visible="false">
+            <Pane fx:id="paneCatalogo" layoutX="148.0" layoutY="88.0" prefHeight="872.0" prefWidth="1294.0">
                <children>
                   <AnchorPane layoutX="1.0" layoutY="-2.0" prefHeight="1300.0" prefWidth="1294.0">
                      <children>
@@ -134,18 +134,7 @@
                                                       <Font size="20.0" />
                                                    </font>
                                                 </Text>
-                                                <Pane layoutX="278.0" layoutY="336.0" prefHeight="31.0" prefWidth="28.0" style="-fx-background-color: white; -fx-border-color: gray; -fx-border-radius: 50;">
-                                                   <children>
-                                                      <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@../imagen/corazon.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                   </children>
-                                                   <cursor>
-                                                      <Cursor fx:constant="HAND" />
-                                                   </cursor>
-                                                </Pane>
+                                                <Button layoutX="204.0" layoutY="339.0" mnemonicParsing="false" text="Button" />
                                              </children>
                                           </Pane>
                                           <Pane onMouseClicked="#btnMouseAttack_Clicked" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="1">
@@ -165,18 +154,6 @@
                                                       <Font size="20.0" />
                                                    </font>
                                                 </Text>
-                                                <Pane layoutX="276.0" layoutY="334.0" prefHeight="31.0" prefWidth="28.0" style="-fx-background-color: white; -fx-border-color: gray; -fx-border-radius: 50;">
-                                                   <children>
-                                                      <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@../imagen/corazon.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                   </children>
-                                                   <cursor>
-                                                      <Cursor fx:constant="HAND" />
-                                                   </cursor>
-                                                </Pane>
                                              </children>
                                           </Pane>
                                           <Pane onMouseClicked="#btnMouseLogitech" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="2">
@@ -196,18 +173,6 @@
                                                       <Font size="20.0" />
                                                    </font>
                                                 </Text>
-                                                <Pane layoutX="282.0" layoutY="338.0" prefHeight="31.0" prefWidth="28.0" style="-fx-background-color: white; -fx-border-color: gray; -fx-border-radius: 50;">
-                                                   <children>
-                                                      <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@../imagen/corazon.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                   </children>
-                                                   <cursor>
-                                                      <Cursor fx:constant="HAND" />
-                                                   </cursor>
-                                                </Pane>
                                              </children>
                                           </Pane>
                                           <Pane onMouseClicked="#btnControlPlay_Clicked" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="3">
@@ -227,18 +192,6 @@
                                                       <Font size="20.0" />
                                                    </font>
                                                 </Text>
-                                                <Pane layoutX="274.0" layoutY="341.0" prefHeight="31.0" prefWidth="28.0" style="-fx-background-color: white; -fx-border-color: gray; -fx-border-radius: 50;">
-                                                   <children>
-                                                      <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@../imagen/corazon.png" />
-                                                         </image>
-                                                         <cursor>
-                                                            <Cursor fx:constant="HAND" />
-                                                         </cursor>
-                                                      </ImageView>
-                                                   </children>
-                                                </Pane>
                                              </children>
                                           </Pane>
                                           <Pane onMouseClicked="#btnTecladoGamerOptico_Clicked" prefHeight="416.0" prefWidth="320.0" style="-fx-background-color: white;" GridPane.rowIndex="1">
@@ -258,18 +211,6 @@
                                                       <Font size="20.0" />
                                                    </font>
                                                 </Text>
-                                                <Pane layoutX="278.0" layoutY="347.0" prefHeight="31.0" prefWidth="28.0" style="-fx-background-color: white; -fx-border-color: gray; -fx-border-radius: 50;">
-                                                   <children>
-                                                      <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@../imagen/corazon.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                   </children>
-                                                   <cursor>
-                                                      <Cursor fx:constant="HAND" />
-                                                   </cursor>
-                                                </Pane>
                                              </children>
                                           </Pane>
                                           <Pane onMouseClicked="#btnTecladoGamerReDragon_Clicked" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -289,18 +230,6 @@
                                                       <Font size="20.0" />
                                                    </font>
                                                 </Text>
-                                                <Pane layoutX="288.0" layoutY="343.0" prefHeight="31.0" prefWidth="28.0" style="-fx-background-color: white; -fx-border-color: gray; -fx-border-radius: 50;">
-                                                   <children>
-                                                      <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@../imagen/corazon.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                   </children>
-                                                   <cursor>
-                                                      <Cursor fx:constant="HAND" />
-                                                   </cursor>
-                                                </Pane>
                                              </children>
                                           </Pane>
                                           <Pane onMouseClicked="#btnAuricularesG335_Clicked" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -320,21 +249,6 @@
                                                       <Font size="20.0" />
                                                    </font>
                                                 </Text>
-                                                <Pane layoutX="283.0" layoutY="338.0" prefHeight="31.0" prefWidth="28.0" style="-fx-background-color: white; -fx-border-color: gray; -fx-border-radius: 50;">
-                                                   <children>
-                                                      <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@../imagen/corazon.png" />
-                                                         </image>
-                                                         <cursor>
-                                                            <Cursor fx:constant="HAND" />
-                                                         </cursor>
-                                                      </ImageView>
-                                                   </children>
-                                                   <cursor>
-                                                      <Cursor fx:constant="HAND" />
-                                                   </cursor>
-                                                </Pane>
                                              </children>
                                           </Pane>
                                           <Pane onMouseClicked="#btnMonitorGamer_Clicked" prefHeight="428.0" prefWidth="320.0" style="-fx-background-color: white;" GridPane.columnIndex="3" GridPane.rowIndex="1">
@@ -354,21 +268,6 @@
                                                       <Font size="20.0" />
                                                    </font>
                                                 </Text>
-                                                <Pane layoutX="278.0" layoutY="335.0" prefHeight="31.0" prefWidth="28.0" style="-fx-background-color: white; -fx-border-color: gray; -fx-border-radius: 50;">
-                                                   <children>
-                                                      <ImageView fitHeight="27.0" fitWidth="22.0" layoutX="3.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@../imagen/corazon.png" />
-                                                         </image>
-                                                         <cursor>
-                                                            <Cursor fx:constant="HAND" />
-                                                         </cursor>
-                                                      </ImageView>
-                                                   </children>
-                                                   <cursor>
-                                                      <Cursor fx:constant="HAND" />
-                                                   </cursor>
-                                                </Pane>
                                              </children>
                                           </Pane>
                                           <Pane layoutX="650.0" layoutY="10.0" onMouseClicked="#btnAuricularesG935_Clicked" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.rowIndex="2">
@@ -628,7 +527,7 @@
                   </Pane>
                </children>
             </Pane>
-            <Pane fx:id="paneCarritoCompras" layoutX="153.0" layoutY="90.0" prefHeight="870.0" prefWidth="1289.0" style="-fx-background-color: white;">
+            <Pane fx:id="paneCarritoCompras" layoutX="153.0" layoutY="90.0" prefHeight="870.0" prefWidth="1289.0" style="-fx-background-color: white;" visible="false">
                <children>
                   <AnchorPane prefHeight="868.0" prefWidth="1288.0">
                      <children>
@@ -652,7 +551,7 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Button>
-                                    <ScrollPane layoutX="8.0" layoutY="5.0" prefHeight="614.0" prefWidth="1267.0" style="-fx-border-color: red;">
+                                    <ScrollPane layoutX="8.0" layoutY="5.0" prefHeight="614.0" prefWidth="1267.0">
                                       <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
                                              <children>

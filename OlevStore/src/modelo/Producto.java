@@ -1,6 +1,7 @@
 package modelo;
 
 public class Producto {
+
     private String nombre;
     private double precio;
     private String rutaImagen;
@@ -11,9 +12,17 @@ public class Producto {
         this.rutaImagen = rutaImagen;
     }
 
-    public String getNombre() { return nombre; }
-    public double getPrecio() { return precio; }
-    public String getRutaImagen() { return rutaImagen; }
+    public String getNombre() {
+        return nombre;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
 
     @Override
     public String toString() {
@@ -22,10 +31,9 @@ public class Producto {
 
     public static Producto fromString(String linea) {
         String[] partes = linea.split(";");
-        if (partes.length != 3) return null;
+        if (partes.length != 3) {
+            return null;
+        }
         return new Producto(partes[0], Double.parseDouble(partes[1]), partes[2]);
     }
 }
-
-
-
