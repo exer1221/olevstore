@@ -1,7 +1,9 @@
 package controlador;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
@@ -10,19 +12,25 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import modelo.Carrito;
 import modelo.Producto;
+import javafx.geometry.Insets;
 
 public class PestañaPrincipal_vistaController implements Initializable {
 
@@ -127,6 +135,8 @@ public class PestañaPrincipal_vistaController implements Initializable {
     //Cositas del carrito de compras
     private Carrito carrito = new Carrito();
     private String correoUsuario;
+    @FXML
+    private VBox contenedorProductos;
 
     /**
      * Initializes the controller class.
@@ -190,6 +200,10 @@ public class PestañaPrincipal_vistaController implements Initializable {
         paneCarritoCompras.setVisible(true);
 
         paneBarrasBusqueda.setVisible(false);
+        
+        //Aqui ando cargando el carrito :v
+        
+        cargarProductosCarrito(correoUsuario);
     }
 
     @FXML
@@ -436,26 +450,18 @@ public class PestañaPrincipal_vistaController implements Initializable {
 
     //Aqui voy a empezar a trabajar en el carrito de compras
     public void registroCarrito(Carrito carrito, String correoUsuario) {
-
         String nombreArchivo = "src/ArchivosTXT/carrito_" + correoUsuario + ".txt";
 
         File carpeta = new File("src/ArchivosTXT");
         if (!carpeta.exists()) {
-            boolean creada = carpeta.mkdirs();
-        } else {
-            System.out.println(" Carpeta 'ArchivosTXT' ya existe.");
+            carpeta.mkdirs();
         }
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo, false))) {
-
-            writer.write("----- Productos actualmente en el carrito -----\n");
             for (Producto p : carrito.getProductos()) {
                 writer.write(p.toString() + "\n");
             }
-            writer.write("------------------------------------------------\n\n");
-
-            System.out.println("[Paso 7] Archivo actualizado en: " + new File(nombreArchivo).getAbsolutePath());
-
+            System.out.println("Archivo actualizado: " + new File(nombreArchivo).getAbsolutePath());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -465,8 +471,8 @@ public class PestañaPrincipal_vistaController implements Initializable {
         this.correoUsuario = correo;
     }
 
-    private void procesarProducto(String nombre, double precio) {
-        Producto producto = new Producto(nombre, precio);
+    private void procesarProducto(String nombre, double precio, String rutaImagen) {
+        Producto producto = new Producto(nombre, precio, rutaImagen);
         carrito.agregarProducto(producto);
 
         registroCarrito(carrito, correoUsuario);
@@ -478,7 +484,6 @@ public class PestañaPrincipal_vistaController implements Initializable {
         alerta.showAndWait();
     }
 
-    @FXML
     private void finalizarCompra(ActionEvent event) {
         if (!carrito.estaVacio()) {
             registroCarrito(carrito, correoUsuario);
@@ -498,64 +503,118 @@ public class PestañaPrincipal_vistaController implements Initializable {
         }
     }
 
+    //APARTIR DE AQUI EMPIEZO A HACER DIABLURAS JAJAJAJKJKAJKA
+    public void cargarProductosCarrito(String correoUsuario) {
+        String nombreArchivo = "src/ArchivosTXT/carrito_" + correoUsuario + ".txt";
+        File archivo = new File(nombreArchivo);
+
+        if (!archivo.exists()) {
+            System.out.println("No existe el archivo del carrito.");
+            return;
+        }
+
+        contenedorProductos.getChildren().clear(); // Limpiar productos anteriores
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                Producto producto = Producto.fromString(linea);
+                if (producto != null) {
+                    HBox item = crearItemProducto(producto);
+                    contenedorProductos.getChildren().add(item);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private HBox crearItemProducto(Producto producto) {
+        HBox caja = new HBox(10);
+        caja.setAlignment(Pos.CENTER_LEFT);
+        caja.setPadding(new Insets(5));
+        caja.setStyle("-fx-border-color: lightgray; -fx-border-radius: 5; -fx-background-color: #fcffff;");
+
+        ImageView imagen = new ImageView();
+        try {
+            imagen.setImage(new Image(getClass().getResourceAsStream("/" + producto.getRutaImagen())));
+        } catch (Exception e) {
+            System.out.println("No se encontró la imagen: " + producto.getRutaImagen());
+        }
+        imagen.setFitHeight(60);
+        imagen.setFitWidth(60);
+
+        VBox texto = new VBox(5);
+        Label nombre = new Label(producto.getNombre());
+        Label precio = new Label("$" + producto.getPrecio());
+
+        nombre.setStyle("-fx-font-weight: bold;");
+        precio.setStyle("-fx-text-fill: green;");
+
+        texto.getChildren().addAll(nombre, precio);
+        caja.getChildren().addAll(imagen, texto);
+
+        return caja;
+    }
+
     @FXML
     private void AggControlXboxCarrito(ActionEvent event) {
-        procesarProducto("Control XBOX Series S", 350000);
+        procesarProducto("Control XBOX Series S", 350000, "imagen/productos/controlXbox.png");
     }
 
     @FXML
     private void AgregarMouseSharkCarrito(ActionEvent event) {
-        procesarProducto("Mouse Attack Shark x3", 150000);
+        procesarProducto("Mouse Attack Shark x3", 150000, "imagen/productos/mouseSharkTank.png");
     }
 
     @FXML
     private void AgregarMouseLogitechCarrito(ActionEvent event) {
-        procesarProducto("Mouse Logitech G203", 110000);
+        procesarProducto("Mouse Logitech G203", 110000, "imagen/productos/mouseLogitech.png");
     }
 
     @FXML
     private void AgregarControlPlayStationCarrito(ActionEvent event) {
-        procesarProducto("Control Play 5 Pro", 380000);
+        procesarProducto("Control Play 5 Pro", 380000, "imagen/productos/mandoPlayStation.png");
     }
 
     @FXML
     private void AgregarTecladoNegroCarrito(ActionEvent event) {
-        procesarProducto("Teclado Gamer Óptico", 540000);
+        procesarProducto("Teclado Gamer Óptico", 540000, "imagen/productos/tecladoNegro.png");
     }
 
     @FXML
     private void AgregarTecladoBlancoCarrito(ActionEvent event) {
-        procesarProducto("Teclado Gamer Redragon", 350000);
+        procesarProducto("Teclado Gamer Redragon", 350000, "imagen/productos/tecladoBlanco.png");
     }
 
     @FXML
     private void AgregarAuricularesG335Carrito(ActionEvent event) {
-        procesarProducto("Auriculares Logitech G335", 270000);
+        procesarProducto("Auriculares Logitech G335", 270000, "imagen/productos/cascos.png");
     }
 
     @FXML
     private void AgregarMonitorGamerCarrito(ActionEvent event) {
-        procesarProducto("Monitor Gamer 32", 400000);
+        procesarProducto("Monitor Gamer 32", 400000, "imagen/productos/monitor.png");
     }
 
     @FXML
     private void AgregarAuricularesG935Carrito(ActionEvent event) {
-        procesarProducto("Logitech G935", 750000);
+        procesarProducto("Logitech G935", 750000, "imagen/productos/AuricularesG935.png");
     }
 
     @FXML
     private void AgregarMonitorAOCCarrito(ActionEvent event) {
-        procesarProducto("Monitor Gamer AOC", 700000);
+        procesarProducto("Monitor Gamer AOC", 700000, "imagen/productos/monitor2.png");
     }
 
     @FXML
     private void AgregarMicrofonoCarrito(ActionEvent event) {
-        procesarProducto("Micrófono VSG Omkara", 239000);
+        procesarProducto("Micrófono VSG Omkara", 239000, "imagen/productos/microfono.png");
     }
 
     @FXML
     private void agregarCamaraWebCarrito(ActionEvent event) {
-        procesarProducto("Camara Web C270 HD", 120000);
+        procesarProducto("Camara Web C270 HD", 120000, "imagen/productos/Camara.png");
     }
 
 }
