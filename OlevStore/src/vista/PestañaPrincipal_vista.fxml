@@ -621,7 +621,7 @@
                   </Pane>
                </children>
             </Pane>
-            <Pane fx:id="paneCarritoCompras" layoutX="153.0" layoutY="90.0" prefHeight="870.0" prefWidth="1289.0" style="-fx-background-color: white;" visible="false">
+            <Pane fx:id="paneCarritoCompras" layoutX="153.0" layoutY="90.0" prefHeight="870.0" prefWidth="1289.0" style="-fx-background-color: white;">
                <children>
                   <AnchorPane prefHeight="868.0" prefWidth="1288.0">
                      <children>
@@ -629,15 +629,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="868.0" prefWidth="1288.0">
                                  <children>
-                                    <Button layoutX="182.0" layoutY="648.0" mnemonicParsing="false" onMouseClicked="#btnPagar_Clicked" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-border-color: 10;" text="Pagar" textFill="WHITE">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </Button>
-                                    <Button layoutX="768.0" layoutY="650.0" mnemonicParsing="false" onMouseClicked="#btnPagarTodo_Clicked" prefHeight="50.0" prefWidth="255.0" style="-fx-background-color: black; -fx-border-color: 10;" text="Pagar Todo" textFill="WHITE">
+                                    <Button fx:id="btnPagarTodo" layoutX="410.0" layoutY="650.0" mnemonicParsing="false" onMouseClicked="#btnPagarTodo_Clicked" prefHeight="51.0" prefWidth="481.0" style="-fx-background-color: black; -fx-border-color: 10;" text="Pagar Todo" textFill="WHITE">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
@@ -652,7 +644,8 @@
                                                 <AnchorPane prefHeight="608.0" prefWidth="1266.0">
                                                    <children>
                                                       <VBox fx:id="contenedorProductos" alignment="TOP_CENTER" layoutX="13.0" layoutY="11.0" prefHeight="591.0" prefWidth="1244.0" spacing="10.0" />
-                                                   </children></AnchorPane>
+                                                   </children>
+                                                </AnchorPane>
                                              </children>
                                           </AnchorPane>
                                       </content>
@@ -665,7 +658,7 @@
                   </AnchorPane>
                </children>
             </Pane>
-            <Pane fx:id="paneListaDeseados" layoutX="145.0" layoutY="85.0" prefHeight="875.0" prefWidth="1296.0">
+            <Pane fx:id="paneListaDeseados" layoutX="145.0" layoutY="85.0" prefHeight="875.0" prefWidth="1296.0" visible="false">
                <children>
                   <AnchorPane prefHeight="876.0" prefWidth="1299.0">
                      <children>
