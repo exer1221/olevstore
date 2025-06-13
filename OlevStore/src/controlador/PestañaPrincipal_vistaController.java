@@ -686,6 +686,8 @@ public class PestañaPrincipal_vistaController implements Initializable {
             e.printStackTrace();
         }
     }
+    
+    //Con este metodo voy a procesar la los productos en la lista de deseos :V
 
     private void procesarDeseo(String nombre, double precio, String rutaImagen) {
         Producto producto = new Producto(nombre, precio, rutaImagen);
