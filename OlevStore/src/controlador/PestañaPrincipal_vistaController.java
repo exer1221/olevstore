@@ -506,15 +506,26 @@ public class PestañaPrincipal_vistaController implements Initializable {
 
     private void procesarProducto(String nombre, double precio, String rutaImagen) {
         Producto producto = new Producto(nombre, precio, rutaImagen);
-        carrito.agregarProducto(producto);
 
-        registroCarrito(carrito, correoUsuario);
+        if (deseos.getProductos().contains(producto)) {
+            Alert alerta = new Alert(Alert.AlertType.WARNING);
+            alerta.setTitle("Conflicto");
+            alerta.setHeaderText(null);
+            alerta.setContentText("El producto ya está en la lista de deseos y no puede estar en ambos.");
+            alerta.showAndWait();
+            return;
+        }
 
-        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-        alerta.setTitle("Producto agregado");
-        alerta.setHeaderText(null);
-        alerta.setContentText(nombre + " agregado al carrito.");
-        alerta.showAndWait();
+        if (!carrito.getProductos().contains(producto)) {
+            carrito.agregarProducto(producto);
+            registroCarrito(carrito, correoUsuario);
+
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("Producto agregado");
+            alerta.setHeaderText(null);
+            alerta.setContentText(nombre + " agregado al carrito.");
+            alerta.showAndWait();
+        }
     }
 
     private void finalizarCompra(ActionEvent event) {
@@ -680,14 +691,23 @@ public class PestañaPrincipal_vistaController implements Initializable {
         Producto producto = new Producto(nombre, precio, rutaImagen);
 
         if (carrito.getProductos().contains(producto)) {
-            mostrarAlerta("Conflicto", "El producto ya está en el carrito.");
+            Alert alerta = new Alert(Alert.AlertType.WARNING);
+            alerta.setTitle("Conflicto");
+            alerta.setHeaderText(null);
+            alerta.setContentText("El producto ya está en el carrito y no puede estar en ambos.");
+            alerta.showAndWait();
             return;
         }
 
         if (!deseos.getProductos().contains(producto)) {
             deseos.agregarProducto(producto);
             registroListaDeseos(deseos, correoUsuario);
-            mostrarAlerta("Agregado", nombre + " agregado a la lista de deseos.");
+
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("Agregado a lista de deseos");
+            alerta.setHeaderText(null);
+            alerta.setContentText(nombre + " agregado a la lista de deseos.");
+            alerta.showAndWait();
         }
     }
 

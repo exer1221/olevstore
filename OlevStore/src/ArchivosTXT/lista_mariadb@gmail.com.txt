@@ -1,0 +1,1 @@
+Control XBOX Series S;350000.0;imagen/productos/controlXbox.png
