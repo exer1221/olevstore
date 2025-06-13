@@ -8,6 +8,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -686,9 +688,8 @@ public class PestañaPrincipal_vistaController implements Initializable {
             e.printStackTrace();
         }
     }
-    
-    //Con este metodo voy a procesar la los productos en la lista de deseos :V
 
+    //Con este metodo voy a procesar la los productos en la lista de deseos :V
     private void procesarDeseo(String nombre, double precio, String rutaImagen) {
         Producto producto = new Producto(nombre, precio, rutaImagen);
 
@@ -797,6 +798,74 @@ public class PestañaPrincipal_vistaController implements Initializable {
     @FXML
     private void agregarFavCamara(ActionEvent event) {
         procesarDeseo("Camara Web C270 HD", 120000, "imagen/productos/Camara.png");
+    }
+
+    /* Aqui agregare la logica para la pasarela de pago
+        1. Cada que confirme la compra, se va a crear un registro, este registro va a estar asociado al usuario que lo haga
+         Tambien se va a eliminar el producto del carrito de compras del usuario, osea, quedara vacio.
+     */
+    public void registroHistorialCompras(Carrito carrito, String correoUsuario) {
+        String archivoHistorial = "src/ArchivosTXT/historial_" + correoUsuario + ".txt";
+
+        File carpeta = new File("src/ArchivosTXT");
+        if (!carpeta.exists()) {
+            carpeta.mkdirs();
+        }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoHistorial, true))) {
+            LocalDateTime fechaHora = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+            for (Producto p : carrito.getProductos()) {
+                writer.write(fechaHora.format(formatter) + ";" + p.getNombre() + ";" + p.getPrecio() + ";" + p.getRutaImagen() + "\n");
+            }
+
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("Historial actualizado");
+            alerta.setHeaderText(null);
+            alerta.setContentText("El historial de compras se ha registrado correctamente.");
+            alerta.showAndWait();
+
+        } catch (IOException e) {
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("Error al guardar historial");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Hubo un error al registrar el historial de compras.");
+            alerta.showAndWait();
+            e.printStackTrace();
+        }
+    }
+
+    public void vaciarCarrito(String correoUsuario) {
+        carrito.vaciar();
+        registroCarrito(carrito, correoUsuario);
+
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("Carrito vacío");
+        alerta.setHeaderText(null);
+        alerta.setContentText("El carrito ha sido vaciado correctamente.");
+        alerta.showAndWait();
+    }
+
+    @FXML
+    private void realizarPago(ActionEvent event) {
+        if (carrito.estaVacio()) {
+            Alert alerta = new Alert(Alert.AlertType.WARNING);
+            alerta.setTitle("Carrito vacío");
+            alerta.setHeaderText(null);
+            alerta.setContentText("No hay productos para procesar el pago.");
+            alerta.showAndWait();
+            return;
+        }
+
+        registroHistorialCompras(carrito, correoUsuario);
+        vaciarCarrito(correoUsuario);
+
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("Pago exitoso");
+        alerta.setHeaderText(null);
+        alerta.setContentText("Compra realizada y registrada exitosamente.");
+        alerta.showAndWait();
     }
 
 }
