@@ -22,6 +22,32 @@
       <AnchorPane prefHeight="960.0" prefWidth="1442.0" AnchorPane.leftAnchor="292.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Pane layoutX="-2.0" prefHeight="960.0" prefWidth="1442.0">
          <children>
+            <Pane fx:id="paneCompras" layoutX="257.0" layoutY="183.0" prefHeight="575.0" prefWidth="794.0" style="-fx-background-color: white; -fx-border-color: gray; -fx-border-radius: 20;" visible="false">
+               <children>
+                  <AnchorPane layoutX="5.0" layoutY="63.0" prefHeight="475.0" prefWidth="779.0">
+                     <children>
+                        <ScrollPane layoutX="7.0" layoutY="6.0" prefHeight="491.0" prefWidth="772.0">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="781.0" prefWidth="745.0">
+                                 <children>
+                                    <VBox fx:id="contenedorCompras" layoutX="11.0" layoutY="13.0" prefHeight="466.0" prefWidth="727.0" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </ScrollPane>
+                     </children></AnchorPane>
+                  <Text layoutX="269.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Historial de Compras">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="742.0" layoutY="19.0" mnemonicParsing="false" onAction="#btnCerrarCompras" prefWidth="28.0" style="-fx-background-radius: 20; -fx-background-color: black;" text="X" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
             <Pane prefHeight="960.0" prefWidth="148.0" style="-fx-background-color: white;">
                <children>
                   <Pane fx:id="pnBtnCarritoCompra" layoutX="16.0" layoutY="14.0" prefHeight="86.0" prefWidth="111.0" style="-fx-background-color: white;" visible="false">
@@ -621,7 +647,7 @@
                   </Pane>
                </children>
             </Pane>
-            <Pane fx:id="paneCarritoCompras" layoutX="153.0" layoutY="90.0" prefHeight="870.0" prefWidth="1289.0" style="-fx-background-color: white;">
+            <Pane fx:id="paneCarritoCompras" layoutX="153.0" layoutY="90.0" prefHeight="870.0" prefWidth="1289.0" style="-fx-background-color: white;" visible="false">
                <children>
                   <AnchorPane prefHeight="868.0" prefWidth="1288.0">
                      <children>
@@ -629,7 +655,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="868.0" prefWidth="1288.0">
                                  <children>
-                                    <Button fx:id="btnPagarTodo" layoutX="410.0" layoutY="650.0" mnemonicParsing="false" onMouseClicked="#btnPagarTodo_Clicked" prefHeight="51.0" prefWidth="481.0" style="-fx-background-color: black; -fx-border-color: 10;" text="Pagar Todo" textFill="WHITE">
+                                    <Button fx:id="btnPagarTodo" layoutX="410.0" layoutY="650.0" mnemonicParsing="false" onAction="#btnPagarTodo" onMouseClicked="#btnPagarTodo_Clicked" prefHeight="51.0" prefWidth="481.0" style="-fx-background-color: black; -fx-border-color: 10;" text="Pagar Todo" textFill="WHITE">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
@@ -673,7 +699,7 @@
                      </children>
                   </AnchorPane>
                </children></Pane>
-            <Pane fx:id="pnPasarelaPago" layoutX="151.0" layoutY="88.0" prefHeight="872.0" prefWidth="1290.0" style="-fx-background-color: white;" visible="false">
+            <Pane fx:id="pnPasarelaPago" layoutX="151.0" layoutY="88.0" prefHeight="872.0" prefWidth="1290.0" style="-fx-background-color: white;">
                <children>
                   <Pane layoutX="49.0" layoutY="20.0" prefHeight="696.0" prefWidth="529.0" style="-fx-border-color: gray; -fx-background-color: white;">
                      <children>
@@ -737,7 +763,7 @@
                               <Font name="System Bold" size="30.0" />
                            </font>
                         </Text>
-                        <TextField layoutX="53.0" layoutY="482.0" prefHeight="44.0" prefWidth="430.0" style="-fx-background-radius: 10;">
+                        <TextField fx:id="txtValPagar2" layoutX="53.0" layoutY="482.0" prefHeight="44.0" prefWidth="430.0" style="-fx-background-radius: 10;">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -751,7 +777,7 @@
                               <Font name="System Bold" size="30.0" />
                            </font>
                         </Text>
-                        <Button layoutX="140.0" layoutY="595.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="245.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Pagar" textFill="WHITE">
+                        <Button layoutX="140.0" layoutY="595.0" mnemonicParsing="false" onAction="#btnPago" prefHeight="50.0" prefWidth="245.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Pagar" textFill="WHITE">
                            <font>
                               <Font size="23.0" />
                            </font>
@@ -785,12 +811,12 @@
                               <Font name="System Bold" size="30.0" />
                            </font>
                         </Text>
-                        <TextField layoutX="53.0" layoutY="482.0" prefHeight="44.0" prefWidth="430.0" style="-fx-background-radius: 10;">
+                        <TextField fx:id="txtValPagar" editable="false" layoutX="53.0" layoutY="482.0" prefHeight="44.0" prefWidth="430.0" style="-fx-background-radius: 10;">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <Button layoutX="140.0" layoutY="595.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="245.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Pagar" textFill="WHITE">
+                        <Button layoutX="140.0" layoutY="595.0" mnemonicParsing="false" onAction="#btnPagar" prefHeight="50.0" prefWidth="245.0" style="-fx-background-color: black; -fx-background-radius: 10;" text="Pagar" textFill="WHITE">
                            <font>
                               <Font size="23.0" />
                            </font>
@@ -850,6 +876,11 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                  </Button>
+                  <Button layoutX="40.0" layoutY="213.0" mnemonicParsing="false" onAction="#btnHistorialCompras" style="-fx-background-color: black; -fx-background-radius: 10;" text="Historial de compras" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Button>
                </children>
             </Pane>
