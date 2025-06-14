@@ -170,6 +170,16 @@ public class PestañaPrincipal_vistaController implements Initializable {
     private Button btnFavCamara;
     @FXML
     private VBox contenedorListaDeseos;
+    @FXML
+    private Button btnPagarTodo;
+    @FXML
+    private Pane paneCompras;
+    @FXML
+    private VBox contenedorCompras;
+    @FXML
+    private TextField txtValPagar;
+    @FXML
+    private TextField txtValPagar2;
 
     /**
      * Initializes the controller class.
@@ -212,6 +222,7 @@ public class PestañaPrincipal_vistaController implements Initializable {
         paneCarritoCompras.setVisible(false);
         paneListaDeseados.setVisible(false);
         paneContentLoggout.setVisible(false);
+        paneCompras.setVisible(false);
 
         pnPasarelaPago.setVisible(false);
     }
@@ -435,7 +446,6 @@ public class PestañaPrincipal_vistaController implements Initializable {
         pnPagoMasterCard.setVisible(true);
     }
 
-    @FXML
     private void btnPagar_Clicked(MouseEvent event) {
         abrirPasarelaPago();
     }
@@ -601,6 +611,31 @@ public class PestañaPrincipal_vistaController implements Initializable {
         caja.getChildren().addAll(imagen, texto);
 
         return caja;
+    }
+
+    public double obtenerTotalCarrito(String correoUsuario) {
+        String archivoCarrito = "src/ArchivosTXT/carrito_" + correoUsuario + ".txt";
+        File archivo = new File(archivoCarrito);
+
+        if (!archivo.exists()) {
+            return 0.0;
+        }
+
+        double total = 0.0;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                Producto producto = Producto.fromString(linea);
+                if (producto != null) {
+                    total += producto.getPrecio();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return total;
     }
 
     @FXML
@@ -821,16 +856,16 @@ public class PestañaPrincipal_vistaController implements Initializable {
             }
 
             Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-            alerta.setTitle("Historial actualizado");
+            alerta.setTitle("Compra realizada exitosamente");
             alerta.setHeaderText(null);
-            alerta.setContentText("El historial de compras se ha registrado correctamente.");
+            alerta.setContentText("Se ha generado su factura de compra.");
             alerta.showAndWait();
 
         } catch (IOException e) {
             Alert alerta = new Alert(Alert.AlertType.ERROR);
-            alerta.setTitle("Error al guardar historial");
+            alerta.setTitle("Error al guardar la de compra");
             alerta.setHeaderText(null);
-            alerta.setContentText("Hubo un error al registrar el historial de compras.");
+            alerta.setContentText("Hubo un error al generar su factura de compra");
             alerta.showAndWait();
             e.printStackTrace();
         }
@@ -840,14 +875,13 @@ public class PestañaPrincipal_vistaController implements Initializable {
         carrito.vaciar();
         registroCarrito(carrito, correoUsuario);
 
-        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        /* Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Carrito vacío");
         alerta.setHeaderText(null);
         alerta.setContentText("El carrito ha sido vaciado correctamente.");
-        alerta.showAndWait();
+        alerta.showAndWait(); */
     }
 
-    @FXML
     private void realizarPago(ActionEvent event) {
         if (carrito.estaVacio()) {
             Alert alerta = new Alert(Alert.AlertType.WARNING);
@@ -866,6 +900,102 @@ public class PestañaPrincipal_vistaController implements Initializable {
         alerta.setHeaderText(null);
         alerta.setContentText("Compra realizada y registrada exitosamente.");
         alerta.showAndWait();
+    }
+
+    @FXML
+    private void btnPagarTodo(ActionEvent event) {
+        paneCarritoCompras.setVisible(false);
+        pnPasarelaPago.setVisible(true);
+        txtValPagar.setText(Double.toString(obtenerTotalCarrito(correoUsuario)));
+        txtValPagar2.setText(Double.toString(obtenerTotalCarrito(correoUsuario)));
+
+        pnPasarelaPago.toFront();
+    }
+
+    public void mostrarHistorialCompras(String correoUsuario) {
+        String archivoHistorial = "src/ArchivosTXT/historial_" + correoUsuario + ".txt";
+        File archivo = new File(archivoHistorial);
+
+        if (!archivo.exists()) {
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("Historial vacío");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Aún no hay historial de compras.");
+            alerta.showAndWait();
+            return;
+        }
+
+        contenedorCompras.getChildren().clear();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                String[] partes = linea.split(";");
+                if (partes.length == 4) {
+                    String fecha = partes[0];
+                    String nombre = partes[1];
+                    double precio = Double.parseDouble(partes[2]);
+                    String rutaImagen = partes[3];
+
+                    HBox item = crearItemHistorial(nombre, precio, rutaImagen, fecha);
+                    contenedorCompras.getChildren().add(item);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private HBox crearItemHistorial(String nombre, double precio, String rutaImagen, String fecha) {
+        HBox caja = new HBox(10);
+        caja.setAlignment(Pos.CENTER_LEFT);
+        caja.setPadding(new Insets(5));
+        caja.setStyle("-fx-border-color: lightgray; -fx-border-radius: 5; -fx-background-color: #fcffff;");
+
+        ImageView imagen = new ImageView();
+        try {
+            imagen.setImage(new Image(getClass().getResourceAsStream("/" + rutaImagen)));
+        } catch (Exception e) {
+            System.out.println("No se encontró la imagen: " + rutaImagen);
+        }
+        imagen.setFitHeight(60);
+        imagen.setFitWidth(60);
+
+        VBox texto = new VBox(5);
+        Label nombreLabel = new Label(nombre);
+        Label precioLabel = new Label("$" + precio);
+        Label fechaLabel = new Label("Fecha: " + fecha);
+
+        nombreLabel.setStyle("-fx-font-weight: bold;");
+        precioLabel.setStyle("-fx-text-fill: green;");
+        fechaLabel.setStyle("-fx-font-size: 10px; -fx-text-fill: gray;");
+
+        texto.getChildren().addAll(nombreLabel, precioLabel, fechaLabel);
+        caja.getChildren().addAll(imagen, texto);
+
+        return caja;
+    }
+
+    @FXML
+    private void btnHistorialCompras(ActionEvent event) {
+        paneCompras.setVisible(true);
+        paneCompras.toFront();
+        mostrarHistorialCompras(correoUsuario);
+    }
+
+    @FXML
+    private void btnCerrarCompras(ActionEvent event) {
+        paneCompras.setVisible(false);
+    }
+
+    @FXML
+    private void btnPago(ActionEvent event) {
+        realizarPago(event);
+    }
+
+    @FXML
+    private void btnPagar(ActionEvent event) {
+        realizarPago(event);
     }
 
 }
